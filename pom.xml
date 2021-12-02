@@ -12,7 +12,7 @@
 	<artifactId>cleanNiceAB</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>cleanNiceAB</name>
-	<description>Booking system</description>
+	<description>BookingForm system</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

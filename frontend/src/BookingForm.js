@@ -1,12 +1,12 @@
 import React, {useState, useRef, useEffect} from "react";
 
 function BookingForm() {
-    const formRef = useRef(3);
+    const formRef = useRef();
 
     function log() {
 
-        const refTest = formRef.current.valueOf();
-        console.log(refTest.valueOf() + " REF TEST")
+        const refTest = formRef.current;
+        console.log("REF TEST: ", refTest)
     }
 
     return (
@@ -14,10 +14,12 @@ function BookingForm() {
 
             <h1>Very, very nice.</h1>
 
+            <input ref={formRef} type="number" name="date"/><br/>
+
             <form>
                 <label>
                     Name:
-                    <input ref={formRef} type="text" name="name"/><br/>
+                    <input type="text" name="name"/><br/>
                 </label>
 
                 <label>

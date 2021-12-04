@@ -9,11 +9,12 @@ import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.web.bind.annotation.*;
 import org.w3c.dom.ls.LSOutput;
 
+import java.util.List;
+
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/booking")
 public class BookingController {
-
 
     private final BookingService bookingService;
 
@@ -25,9 +26,13 @@ public class BookingController {
 
     @PostMapping("/add")
     public ResponseEntity<Booking> addBooking(@RequestBody Booking booking){
-        System.out.println(booking.getClass().getName());
         Booking newBooking = bookingService.addBooking(booking);
         return new ResponseEntity<>(newBooking, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/viewAll")
+    public List<Booking> getAllBookings(){
+        return bookingService.findAllBookings();
     }
 
 }

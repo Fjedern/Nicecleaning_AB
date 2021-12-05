@@ -18,7 +18,6 @@ public class BookingService {
         this.bookingRepo = bookingRepo;
     }
 
-
     public Booking addBooking(Booking booking){
         return bookingRepo.save(booking);
     }

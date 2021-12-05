@@ -30,7 +30,4 @@ public class Booking implements Serializable {
     @Column(name = "date")
     private Date date;
 
-
-
-
 }

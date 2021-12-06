@@ -26,6 +26,10 @@ public class BookingService {
         return bookingRepo.findAll();
     }
 
+    public  List<Booking> findAllBookingsByCustomerName(String name){
+        return bookingRepo.findByName(name);
+    }
+
     public Booking updateBooking(Booking booking){
         return bookingRepo.save(booking);
     }

@@ -16,7 +16,7 @@ function BookingForm() {
                 body: stringifyFormData(data),
             }
         )
-
+        document.getElementsByName('booking-form')[0].reset();
     }
 
     function stringifyFormData(fd) {
@@ -29,7 +29,7 @@ function BookingForm() {
 
     return (
         <>
-            <form className="w-full max-w-lg" onSubmit={handleSubmit}>
+            <form name="booking-form" className="w-full max-w-lg" onSubmit={handleSubmit}>
                 <div className="flex flex-wrap -mx-3 mb-6">
                     <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                         <label className="block uppercase tracking-wide text-xs font-bold mb-2"

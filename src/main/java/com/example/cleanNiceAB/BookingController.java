@@ -35,4 +35,17 @@ public class BookingController {
         return bookingService.findAllBookings();
     }
 
+    @GetMapping("/viewAll/{name}")
+    public List<Booking> getAllBookingsByCustomerName(@PathVariable("name") String name){
+        return  bookingService.findAllBookingsByCustomerName(name);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteBooking (@PathVariable("id") Long id){
+        bookingService.deleteBooking(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+
 }

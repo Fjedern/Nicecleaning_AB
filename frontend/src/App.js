@@ -20,7 +20,7 @@ const postData = {"id": 0,
         method: "post",
         headers: {"Content-Type":'application/json'},
         body: JSON.stringify(postData),
-        }
+        } 
     )
     .then(response => {
             console.log(response.status)

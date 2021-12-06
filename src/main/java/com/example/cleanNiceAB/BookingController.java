@@ -35,7 +35,7 @@ public class BookingController {
         return bookingService.findAllBookings();
     }
 
-    @GetMapping("/viewAll/{id}")
+    @GetMapping("/viewAll/{name}")
     public List<Booking> getAllBookingsByCustomerName(@PathVariable("name") String name){
         return  bookingService.findAllBookingsByCustomerName(name);
     }

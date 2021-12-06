@@ -11,12 +11,12 @@ function BookingForm() {
 
     return (
         <div>
+            <br>
+            </br>
 
-            <h1>Very, very nice.</h1>
+            <h1>Booking</h1>
 
-            <input ref={formRef} type="number" name="date"/><br/>
-
-            <form>
+            <form ref={formRef}>
                 <label>
                     Name:
                     <input type="text" name="name"/><br/>
@@ -40,8 +40,10 @@ function BookingForm() {
                         <option value="window">Window Cleaning</option>
                     </select>
                 </label>
-                <input onClick={log()} type="submit" value="Submit"/>
+                <input type="submit" value="Submit"/>
             </form>
+            <br/>
+            <br/>
         </div>
     );
 }

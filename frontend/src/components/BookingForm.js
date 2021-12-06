@@ -11,25 +11,25 @@ function BookingForm() {
 
     return (
         <div>
-
-            <h1>Very, very nice.</h1>
-
-            <input ref={formRef} type="number" name="date"/><br/>
+            <label>Boka en städning</label>
 
             <form>
                 <label>
-                    Name:
-                    <input type="text" name="name"/><br/>
+                    Namn (Företag eller privatperson)
+                    <input
+                    id="username" type="text" type="text" name="name"/><br/>
                 </label>
 
                 <label>
-                    Address:
-                    <input type="text" name="address"/><br/>
+                    Address
+                    <input
+                    type="text" name="address"/><br/>
                 </label>
 
                 <label>
-                    Date:
-                    <input type="text" name="date"/><br/><br/>
+                    Datum
+                    <input
+                    type="text" name="date"/><br/>
                 </label>
                 <label>
                     Type of cleaning service:

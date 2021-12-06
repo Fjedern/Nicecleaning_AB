@@ -27,6 +27,7 @@ function BookingForm() {
         return JSON.stringify(data, null, null);
     }
 
+    
     return (
         <>
             <form name="booking-form" className="w-full max-w-lg" onSubmit={handleSubmit}>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -15,4 +16,6 @@ public interface BookingRepo extends JpaRepository<Booking, Long> {
     void deleteBookingById(Long id);
 
     Optional<Booking> findById(Long id);
+
+    List<Booking> findByName(String name);
 }

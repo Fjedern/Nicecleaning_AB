@@ -15,8 +15,7 @@ const postData = {"id": 0,
 
 
 //add entries to DB
-/*
- useEffect(() => {
+/* useEffect(() => {
     fetch("http://localhost:8080/booking/add",{
         method: "post",
         headers: {"Content-Type":'application/json'},
@@ -32,8 +31,7 @@ const postData = {"id": 0,
             console.log(response.status)}
         })
         .catch(err => err)
-    }, []);
-    */
+    }, []);*/
 
 
     const viewAllBookings = ()=> {

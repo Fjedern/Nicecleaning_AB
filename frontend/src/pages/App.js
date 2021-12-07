@@ -2,6 +2,7 @@
 import '../App.css';
 import MainPage from './MainPage.js';
 import AllBookings from './AllBookings.js';
+import Register from './Register.js';
 
 import {
   BrowserRouter as Router,
@@ -47,6 +48,7 @@ const postData = {"id": 0,
                 <Routes>
                     <Route exact path="/" element={<MainPage />} />
                     <Route path="/allbookings" element={<AllBookings />} />
+                    <Route path="/register" element={<Register />} />
                 </Routes>
             </Router>
         </>

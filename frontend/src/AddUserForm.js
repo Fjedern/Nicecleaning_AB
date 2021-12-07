@@ -45,7 +45,6 @@ function AddUserForm() {
                         <option value="admin">Admin</option>
                         <option value="customer">Customer</option>
                         <option value="corporatCeustomer">Corporat Ceustomer</option>
-                        <option value="window">Window Cleaning</option>
                     </select>
                 </label>
                 <input type="submit" value="Submit"/>

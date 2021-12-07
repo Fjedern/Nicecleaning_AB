@@ -8,8 +8,9 @@ import {
   Routes,
   Route,
   Link,
-  Redirect
+  Redirect,
 } from "react-router-dom";
+import {useEffect} from "react";
 
 const App = () => {
 
@@ -21,7 +22,6 @@ const postData = {"id": 0,
 
 
 //add entries to DB
-/*
  useEffect(() => {
     fetch("http://localhost:8080/booking/add",{
         method: "post",
@@ -39,7 +39,6 @@ const postData = {"id": 0,
         })
         .catch(err => err)
     }, []);
-    */
 
         return (
         <>

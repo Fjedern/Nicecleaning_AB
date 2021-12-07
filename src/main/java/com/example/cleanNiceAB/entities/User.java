@@ -24,6 +24,8 @@ public class User implements Serializable {
     private String userName;
     @Column(name = "password")
     private String password;
+    @Column(name= "salt")
+    private byte[] salt;
     @Column(name = "f_name")
     private String fName;
     @Column(name = "l_name")

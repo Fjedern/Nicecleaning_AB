@@ -20,19 +20,22 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
     private Long id;
-    @Column(name = "user_name")
-    private String userName;
+    @Column(name = "email")
+    private String email;
     @Column(name = "password")
     private String password;
     @Column(name= "salt")
     private byte[] salt;
-    @Column(name = "f_name")
-    private String fName;
-    @Column(name = "l_name")
-    private String lName;
+    @Column(name = "name")
+    private String name;
     @Column(name = "phone_nr")
     private String phoneNr;
     @Column(name = "address")
     private String address;
+    @Column(name="user_type")
+    private String userType;
+    @Column(name="is_company")
+    private boolean isCompany;
+
 
 }

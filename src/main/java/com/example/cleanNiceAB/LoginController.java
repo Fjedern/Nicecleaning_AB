@@ -24,7 +24,7 @@ public class LoginController {
         List<User> userList = userService.getAll();
 
         for (User user: userList){
-            if (user.getUserName().equals(userName)) {
+            if (user.getEmail().equals(userName)) {
                 password = SecureUtils.getSecurePassword(password, user.getSalt());
                 if (user.getPassword().equals(password)) {
                     return true;

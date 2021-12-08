@@ -3,6 +3,8 @@ import BookingForm from '../components/BookingForm.js';
 import AddUserForm from '../components/AddUserForm.js';
 import { Link } from "react-router-dom";
 import {useEffect} from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const MainPage =()=>{
 
@@ -38,8 +40,9 @@ const MainPage =()=>{
 
     return (
         <div>
+            <Header></Header>
             <header className="App-header">
-                <h2 className="pb-8">Städa Fint AB</h2>
+
                 <BookingForm />
                 <AddUserForm />
                 <div>
@@ -51,7 +54,9 @@ const MainPage =()=>{
                         View All Bookings
                     </Link>
                 </div>
+
             </header>
+            <Footer></Footer>
         </div>
     );
 }

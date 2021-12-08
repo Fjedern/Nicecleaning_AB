@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
@@ -20,20 +21,20 @@ public class LoginController {
     UserService userService;
 
     @PostMapping("/validation")
-    public Boolean loginValidator(@RequestBody String userName, String password) throws NoSuchUserNameOrPasswordException {
+    public RedirectView loginValidator(@RequestBody String userName, String password) {
         List<User> userList = userService.getAll();
 
         for (User user: userList){
-            if (user.getUserName().equals(userName)) {
+            if (user.getEmail().equals(userName)) {
                 password = SecureUtils.getSecurePassword(password, user.getSalt());
                 if (user.getPassword().equals(password)) {
-                    return true;
+                    return new RedirectView("http://localhost:3000/minsida");
 
                 }
             }
         }
 
-        throw new NoSuchUserNameOrPasswordException("Wrong Username or Password");
+        return new RedirectView("http://localhost:3000/");
 
     }
 }

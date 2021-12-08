@@ -1,10 +1,8 @@
 
 import BookingForm from '../components/BookingForm.js';
-import AddUserForm from '../components/AddUserForm.js';
 import { Link } from "react-router-dom";
 import {useEffect} from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+
 
 const MainPage =()=>{
 
@@ -40,11 +38,11 @@ const MainPage =()=>{
 
     return (
         <div>
-            <Header></Header>
+
             <header className="App-header">
 
                 <BookingForm />
-                <AddUserForm />
+
                 <div>
                 <button className="block mt-8 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-2 border border-gray-400 rounded shadow">
                         Logga in
@@ -60,7 +58,7 @@ const MainPage =()=>{
                 </div>
 
             </header>
-            <Footer></Footer>
+
         </div>
     );
 }

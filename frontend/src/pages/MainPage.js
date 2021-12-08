@@ -16,6 +16,7 @@ const MainPage =()=>{
         "address": "Firstgatan 1, Firststad"
     };
 
+/*
     useEffect(() => {
         fetch("http://localhost:8080/user/add", {
                 method: "post",
@@ -33,7 +34,7 @@ const MainPage =()=>{
                 }
             })
             .catch(err => err)
-    }, []);
+    }, []);*/
 
 
     return (

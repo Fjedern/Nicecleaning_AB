@@ -3,8 +3,6 @@ import BookingForm from '../components/BookingForm.js';
 import AddUserForm from '../components/AddUserForm.js';
 import { Link } from "react-router-dom";
 import {useEffect} from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 
 const MainPage =()=>{
 
@@ -40,7 +38,7 @@ const MainPage =()=>{
 
     return (
         <div>
-            <Header></Header>
+
             <header className="App-header">
 
                 <BookingForm />
@@ -60,7 +58,6 @@ const MainPage =()=>{
                 </div>
 
             </header>
-            <Footer></Footer>
         </div>
     );
 }

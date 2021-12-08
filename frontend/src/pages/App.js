@@ -11,6 +11,8 @@ import {
   Link,
   Redirect
 } from "react-router-dom";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const App = () => {
 
@@ -42,6 +44,7 @@ const postData = {"id": 0,
 
         return (
         <>
+            <Header></Header>
             <Router>
                 <Routes>
                     <Route exact path="/" element={<MainPage />} />
@@ -49,6 +52,7 @@ const postData = {"id": 0,
                     <Route path="/register" element={<Register />} />
                 </Routes>
             </Router>
+            <Footer></Footer>
         </>
 
 

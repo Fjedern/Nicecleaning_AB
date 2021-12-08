@@ -14,9 +14,4 @@ class CleanNiceAbApplicationTests {
 	void contextLoads() {
 	}
 
-	@Test
-	void loginSuccessTest() throws NoSuchUserNameOrPasswordException {
-		Boolean success = loginController.loginValidator("firstUser", "first123");
-		System.out.println(success!=false);
-	}
 }

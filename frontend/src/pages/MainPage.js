@@ -24,6 +24,7 @@ const MainPage = () => {
                             to="/register">
                                 <p>Klicka här för att registrera dig</p>
                         </Link>
+                    </div>
                     
                 </div>
 

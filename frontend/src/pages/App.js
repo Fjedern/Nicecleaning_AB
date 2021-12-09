@@ -7,6 +7,8 @@ import UserPage from './UserPage.js';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import About from "./About";
+import { CookiesProvider } from 'react-cookie';
+
 
 import {
   BrowserRouter as Router,
@@ -20,6 +22,7 @@ const App = () => {
 
         return (
         <>
+           <CookiesProvider>
             <Router>
                 <Header/>
                 <Routes>
@@ -27,43 +30,19 @@ const App = () => {
                     <Route path="/allbookings" element={<AllBookings />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/minsida" element={<UserPage />} />
-                    <Route path="/omoss" element={<About />} />
+                      <Route path="/omoss" element={<About />} />
                 </Routes>
                 <Footer/>
             </Router>
+           </CookiesProvider>
         </>
+
 
         );
 }
 
 export default App;
 
-/*
-const postData = {"id": 0,
-                 "cleaningPackage": "basic cleaning",
-                 "address": "testgatan 11, Testeborg",
-                 "name": "Test AB",
-                 "date": "2021-12-03T13:42:20.937Z"};
-
-
-//add entries to DB
-/* useEffect(() => {
-    fetch("http://localhost:8080/booking/add",{
-        method: "post",
-        headers: {"Content-Type":'application/json'},
-        body: JSON.stringify(postData),
-        }
-    )
-    .then(response => {
-            console.log(response.status)
-            if (response.status === 201) {
-                console.log(response);
-
-            }else{
-            console.log(response.status)}
-        })
-        .catch(err => err)
-    }, []);*/
 
 
 

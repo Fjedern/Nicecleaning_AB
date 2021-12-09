@@ -1,17 +1,22 @@
-
 import BookingForm from '../components/BookingForm.js';
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import {useEffect} from "react";
+import LoginForm from "../components/LoginForm";
 
 
-const MainPage =()=>{
+const MainPage = () => {
 
     return (
+        <div>
 
             <header className="App-header">
+
                 <div>
-                    <button className="block bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-2 border border-gray-400 rounded shadow">
-                            LoginForm goes here
+                    <LoginForm />
+                    <button
+                        className="block mt-8 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-2 border border-gray-400 rounded shadow"
+                        to="/register">
+                        Logga in
                     </button>
                     <div className="mt-7">
                     Vill du bli kund hos oss?
@@ -19,42 +24,15 @@ const MainPage =()=>{
                             to="/register">
                                 <p>Klicka här för att registrera dig</p>
                         </Link>
-                    </div>
+                    
                 </div>
+
             </header>
 
+
+        </div>
     );
 }
 
 export default MainPage;
 
-/*
-const postUserData = {
-        "id": 0,
-        "userName": "firstUser",
-        "password": "first123",
-        "fName": "First",
-        "lName": "Firstsson",
-        "phoneNr": "123456",
-        "address": "Firstgatan 1, Firststad"
-    };
-
-/*
-    useEffect(() => {
-        fetch("http://localhost:8080/user/add", {
-                method: "post",
-                headers: {"Content-Type": 'application/json'},
-                body: JSON.stringify(postUserData),
-            }
-        )
-            .then(response => {
-                console.log(response.status)
-                if (response.status === 201) {
-                    console.log(response);
-
-                } else {
-                    console.log(response.status)
-                }
-            })
-            .catch(err => err)
-    }, []);*/

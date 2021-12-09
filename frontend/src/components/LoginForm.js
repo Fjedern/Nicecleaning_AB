@@ -8,15 +8,16 @@ function LoginForm() {
         password:"",
     });
 
-    const [cookies, setCookie] = useCookies(['jwt'])
 
+const [cookies, setCookie] = useCookies(['jwt'])
 
-    const onSubmit=(event)=>{
+    const onSubmit = (event) => {
         event.preventDefault();
         console.log(formData);
         loadData();
     };
         //TODO add requirements/validation
+
         const loadData = async () => {
         console.log("här");
         const response = await fetch("http://localhost:8080/login/validation",{
@@ -26,12 +27,12 @@ function LoginForm() {
         })
             .then(response => response.json())
             .then(data => setCookie('jwt', response, {path: '/'}))
+
     }
 
 
     return (
         <div className="w-full max-w-lg">
-            <h1 className="text-lg font-bold text-center text-gray-400">Ny Kund</h1>
             <form onSubmit={onSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" required>
                 <div className="mb-4">
                     <div className="inline">
@@ -41,21 +42,24 @@ function LoginForm() {
 
                     <label className="block uppercase tracking-wide text-xs font-bold mb-2 text-gray-600">
                         Email
-                        <input className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                               type="text" name="email" value={formData.email}
-                               onChange={(e) => setFormData({...formData, email: e.target.value})} />
+                        <input
+                            className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                            type="text" name="email" value={formData.email}
+                            onChange={(e) => setFormData({...formData, email: e.target.value})}/>
                     </label>
 
                     <label className="block uppercase tracking-wide text-xs font-bold mb-2 text-gray-600">
                         Password
-                        <input className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                               type="text" name="password" value={formData.password}
-                               onChange={(e) => setFormData({...formData, password: e.target.value})} />
+                        <input
+                            className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                            type="text" name="password" value={formData.password}
+                            onChange={(e) => setFormData({...formData, password: e.target.value})}/>
                     </label>
 
 
-                    <input className="bg-gray-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                           type="submit" value="Registrera"/>
+                    <input
+                        className="bg-gray-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        type="submit" value="Logga in"/>
                 </div>
             </form>
         </div>

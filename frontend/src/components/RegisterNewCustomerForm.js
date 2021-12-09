@@ -31,9 +31,10 @@ function RegisterNewCustomerForm() {
 
             } else {
                 console.log(response.status)
-            }
-        })
-
+            }})
+            .catch((error) => {
+                console.log(error)
+            })
     }
 
 
@@ -61,36 +62,36 @@ function RegisterNewCustomerForm() {
                             För-och efternamn/Företagets namn
                             <input className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                              type="text" name="name" value={formData.name}
-                             onChange={(e) => setFormData({...formData, name: e.target.value})}/>
+                             onChange={(e) => setFormData({...formData, name: e.target.value})} required/>
                         </label>
 
                     <label className="block uppercase tracking-wide text-xs font-bold mb-2 text-gray-600">
                         Address
                         <input className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                         type="text" name="address" value={formData.address}
-                        onChange={(e) => setFormData({...formData, address: e.target.value})} />
+                        onChange={(e) => setFormData({...formData, address: e.target.value})} required />
                     </label>
 
                    <label className="block uppercase tracking-wide text-xs font-bold mb-2 text-gray-600">
                         Telefonummer
                         <input className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                         type="text" name="phoneNr" value={formData.phoneNr}
-                        onChange={(e) => setFormData({...formData, phoneNr: e.target.value})} />
+                        onChange={(e) => setFormData({...formData, phoneNr: e.target.value})} required/>
                     </label>
 
                    <label className="block uppercase tracking-wide text-xs font-bold mb-2 text-gray-600">
                        Email (används som användarnamn)
                        <input className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                        type="text" name="email" value={formData.email}
-                       onChange={(e) => setFormData({...formData, email: e.target.value})} />
+                       onChange={(e) => setFormData({...formData, email: e.target.value})} required/>
                    </label>
                    <label className="block uppercase tracking-wide text-xs font-bold mb-2 text-gray-600">
                        Lösenord
                        <input className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                        type="text" name="password" value={formData.password}
-                       onChange={(e) => setFormData({...formData, password: e.target.value})}/>
+                       onChange={(e) => setFormData({...formData, password: e.target.value})} required/>
                    </label>
-                    <input className="bg-gray-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    <input className="bg-gray-700 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="submit" value="Registrera"/>
                 </div>
             </form>

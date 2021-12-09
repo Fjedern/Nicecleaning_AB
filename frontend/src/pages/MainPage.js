@@ -6,7 +6,30 @@ import {useEffect} from "react";
 
 const MainPage =()=>{
 
-    const postUserData = {
+    return (
+
+            <header className="App-header">
+                <div>
+                    <button className="block bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-2 border border-gray-400 rounded shadow">
+                            LoginForm goes here
+                    </button>
+                    <div className="mt-7">
+                    Vill du bli kund hos oss?
+                        <Link className="block hover:text-gray-700 underline"
+                            to="/register">
+                                <p>Klicka här för att registrera dig</p>
+                        </Link>
+                    </div>
+                </div>
+            </header>
+
+    );
+}
+
+export default MainPage;
+
+/*
+const postUserData = {
         "id": 0,
         "userName": "firstUser",
         "password": "first123",
@@ -35,33 +58,3 @@ const MainPage =()=>{
             })
             .catch(err => err)
     }, []);*/
-
-
-    return (
-        <div>
-
-            <header className="App-header">
-
-                <BookingForm />
-
-                <div>
-                <button className="block mt-8 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-2 border border-gray-400 rounded shadow">
-                        Logga in
-                </button>
-                <Link className="block no-underline hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-opacity-50"
-                    to="/register">
-                        Vill du bli kund hos oss? Klicka här för att registrera dig
-                </Link>
-                    <Link className="no-underline hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-opacity-50"
-                    to="/AllBookings">
-                        View All Bookings
-                    </Link>
-                </div>
-
-            </header>
-
-        </div>
-    );
-}
-
-export default MainPage;

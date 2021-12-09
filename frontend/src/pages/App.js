@@ -6,6 +6,7 @@ import Register from './Register.js';
 import UserPage from './UserPage.js';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import About from "./About";
 
 import {
   BrowserRouter as Router,
@@ -17,6 +18,27 @@ import {
 
 const App = () => {
 
+        return (
+        <>
+            <Router>
+                <Header/>
+                <Routes>
+                    <Route exact path="/" element={<MainPage />} />
+                    <Route path="/allbookings" element={<AllBookings />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/minsida" element={<UserPage />} />
+                    <Route path="/omoss" element={<About />} />
+                </Routes>
+                <Footer/>
+            </Router>
+        </>
+
+        );
+}
+
+export default App;
+
+/*
 const postData = {"id": 0,
                  "cleaningPackage": "basic cleaning",
                  "address": "testgatan 11, Testeborg",
@@ -42,26 +64,6 @@ const postData = {"id": 0,
         })
         .catch(err => err)
     }, []);*/
-
-        return (
-        <>
-            <Router>
-                <Header/>
-                <Routes>
-                    <Route exact path="/" element={<MainPage />} />
-                    <Route path="/allbookings" element={<AllBookings />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/minsida" element={<UserPage />} />
-                </Routes>
-                <Footer/>
-            </Router>
-        </>
-
-
-        );
-}
-
-export default App;
 
 
 

@@ -6,6 +6,7 @@ import com.example.cleanNiceAB.exeptions.NoSuchUserNameOrPasswordException;
 import com.example.cleanNiceAB.utils.JwtUtils;
 import com.example.cleanNiceAB.utils.SecureUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/login")
 public class LoginController {
 
@@ -26,10 +28,16 @@ public class LoginController {
     public ResponseEntity<?> loginValidator(@RequestBody String userName, String password) {
         List<User> userList = userService.getAll();
 
+
+
         for (User user: userList){
-            if (user.getEmail().equals(userName)) {
+            System.out.println(userName +" " + user.getEmail());
+            if (userName.equals("\""+user.getEmail()+"\"")) {
+                System.out.println("SUCCESS ONE");
                 password = SecureUtils.getSecurePassword(password, user.getSalt());
+                
                 if (user.getPassword().equals(password)) {
+                    System.out.println("SUCCESS TWO");
                     final String token = JwtUtils.createJWT(user);
                     return ResponseEntity.ok(new JwtResponse(token));
                 }

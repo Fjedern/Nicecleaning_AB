@@ -45,6 +45,7 @@ const postData = {"id": 0,
 
         return (
         <>
+
             <Router>
                 <Header/>
                 <Routes>
@@ -55,6 +56,7 @@ const postData = {"id": 0,
                 </Routes>
                 <Footer/>
             </Router>
+
         </>
 
 

@@ -6,6 +6,7 @@ import Register from './Register.js';
 import UserPage from './UserPage.js';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { CookiesProvider } from 'react-cookie';
 
 import {
   BrowserRouter as Router,
@@ -45,7 +46,7 @@ const postData = {"id": 0,
 
         return (
         <>
-
+           <CookiesProvider>
             <Router>
                 <Header/>
                 <Routes>
@@ -56,7 +57,7 @@ const postData = {"id": 0,
                 </Routes>
                 <Footer/>
             </Router>
-
+           </CookiesProvider>
         </>
 
 

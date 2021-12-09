@@ -1,4 +1,5 @@
 import React, {useRef, useState} from "react";
+import { useCookies } from 'react-cookie';
 
 function LoginForm() {
 
@@ -7,27 +8,24 @@ function LoginForm() {
         password:"",
     });
 
+    const [cookies, setCookie] = useCookies(['jwt'])
+
 
     const onSubmit=(event)=>{
         event.preventDefault();
         console.log(formData);
-
+        loadData();
+    };
         //TODO add requirements/validation
-        fetch("http://localhost:8080/login/validation",{
+        const loadData = async () => {
+        console.log("här");
+        const response = await fetch("http://localhost:8080/login/validation",{
             method: "post",
             headers: {"Content-Type":'application/json'},
-            body: JSON.stringify(formData.email, formData.password),
+            body: JSON.stringify(formData),
         })
-            .then(response => {
-                console.log(response.status)
-                if (response.status === 201) {
-                    console.log(response);
-
-                } else {
-                    console.log(response)
-                }
-            })
-
+            .then(response => response.json())
+            .then(data => setCookie('jwt', response, {path: '/'}))
     }
 
 

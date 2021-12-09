@@ -2,6 +2,7 @@
 import BookingForm from '../components/BookingForm.js';
 import { Link } from "react-router-dom";
 import {useEffect} from "react";
+import BookingFormV2 from "../components/BookingFormV2";
 
 
 const MainPage =()=>{
@@ -42,7 +43,7 @@ const MainPage =()=>{
 
             <header className="App-header">
 
-                <BookingForm />
+                <BookingFormV2 />
 
                 <div>
                 <button className="block mt-8 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-2 border border-gray-400 rounded shadow">

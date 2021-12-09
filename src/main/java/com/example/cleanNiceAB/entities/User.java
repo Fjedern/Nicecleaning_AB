@@ -34,8 +34,8 @@ public class User implements Serializable {
     private String address;
     @Column(name="user_type")
     private String userType;
-    @Column(name="is_company")
-    private boolean isCompany;
+    @Column(nullable = false, columnDefinition = "TINYINT(1)", name="is_company")
+    private boolean company;
 
 
 }

@@ -3,9 +3,15 @@ package com.example.cleanNiceAB;
 import com.example.cleanNiceAB.Services.UserService;
 import com.example.cleanNiceAB.entities.User;
 import com.example.cleanNiceAB.exeptions.NoSuchUserNameOrPasswordException;
+import com.example.cleanNiceAB.utils.JwtUtils;
 import com.example.cleanNiceAB.utils.SecureUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
@@ -19,7 +25,7 @@ public class LoginController {
     UserService userService;
 
     @PostMapping("/validation")
-    public RedirectView loginValidator(@RequestBody String userName, String password) {
+    public ResponseEntity<?> loginValidator(@RequestBody String userName, String password) {
         List<User> userList = userService.getAll();
 
 
@@ -29,15 +35,16 @@ public class LoginController {
             if (userName.equals("\""+user.getEmail()+"\"")) {
                 System.out.println("SUCCESS ONE");
                 password = SecureUtils.getSecurePassword(password, user.getSalt());
+                
                 if (user.getPassword().equals(password)) {
                     System.out.println("SUCCESS TWO");
-                    return new RedirectView("http://localhost:3000/minsida");
-
+                    final String token = JwtUtils.createJWT(user);
+                    return ResponseEntity.ok(new JwtResponse(token));
                 }
             }
         }
 
-        return new RedirectView("http://localhost:3000/");
+        return null;
 
     }
 }

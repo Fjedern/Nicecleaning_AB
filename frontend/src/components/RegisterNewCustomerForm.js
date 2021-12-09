@@ -9,7 +9,7 @@ function RegisterNewCustomerForm() {
         phoneNr: "",
         email: "",
         password: "",
-        isCompany: "",
+        company: "",
         userType: "customer",
     });
 
@@ -44,13 +44,13 @@ function RegisterNewCustomerForm() {
                 <div className="mb-4">
                     <div className="inline">
                         <label className="inline-flex items-center md:w-2/3  pr-6">
-                              <input className="form-radio" type="radio" name="is_company" value={formData.isCompany} onChange={() => setFormData({...formData, isCompany: false})}/>
+                              <input className="form-radio" type="radio" name="company" value={formData.company} onChange={() => setFormData({...formData, company: false})}/>
                               <span className="text-sm ml-2 pr-4 text-gray-500 font-bold">
                                 Privatperson
                               </span>
                         </label>
                         <label className="inline-flex items-center md:w-2/3">
-                              <input className="form-radio" type="radio" name="is_company" value={formData.isCompany} onChange={() => setFormData({...formData, isCompany: true})}
+                              <input className="form-radio" type="radio" name="company" value={formData.company} onChange={() => setFormData({...formData, company: true})}
                               />
                               <span className="text-sm ml-2 text-gray-500 font-bold">
                                 Företag

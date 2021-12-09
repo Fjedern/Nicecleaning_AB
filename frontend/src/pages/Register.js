@@ -2,7 +2,7 @@ import RegisterNewCustomerForm from '../components/RegisterNewCustomerForm.js';
 
 const Register =()=>{
     return (
-        <div className="container mx-auto">
+        <div className="App-header container mx-auto">
             <RegisterNewCustomerForm />
         </div>
 

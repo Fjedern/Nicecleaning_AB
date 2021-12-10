@@ -1,6 +1,7 @@
 import BookingForm from '../components/BookingForm.js';
 import {Link} from "react-router-dom";
 import {useEffect} from "react";
+import BookingFormV2 from "../components/BookingFormV2";
 import LoginForm from "../components/LoginForm";
 
 

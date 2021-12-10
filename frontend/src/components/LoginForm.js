@@ -1,13 +1,15 @@
 import React, {useRef, useState} from "react";
-import { useCookies } from 'react-cookie';
+import { useCookies, withCookies, Cookies } from 'react-cookie';
+import { useNavigate } from 'react-router';
 
 function LoginForm() {
+
+    let navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         email: "",
         password: ""
     });
-
 
 const [cookies, setCookie] = useCookies(['jwt'])
 
@@ -25,10 +27,20 @@ const [cookies, setCookie] = useCookies(['jwt'])
             headers: {"Content-Type": 'application/json'},
             body: JSON.stringify(formData)
         })
-            .then(response => (response.json()) )
-            .then(response => setCookie('jwt', response, {path: '/'}))
 
+            .then(response => response.json())
+            .then(response => setCookie('jwt', response, {path: '/'}))
+            .then(ifUserHaveJwt)
     }
+
+
+    const ifUserHaveJwt = function () {
+    console.log(cookies);
+    if(cookies != null){
+        navigate('/minsida')}
+    }
+
+
 
 
     return (

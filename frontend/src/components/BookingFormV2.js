@@ -26,24 +26,16 @@ export default function BookingFormV2() {
         )
     };
 
-    function stringifyFormData(fd) {
-        const data = {};
-        for (let key of fd.keys()) {
-            data[key] = fd.get(key);
-        }
-        return JSON.stringify(data, null, null);
-    }
-
 
     return (
         /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
         <form onSubmit={handleSubmit(onSubmit)}>
             <label>Name</label>
-            <input className="block w-full bg-transparent outline-none border-b-2 py-2 px-4  placeholder-white-500 focus:bg-white-600" required {...register("name")} />
+            <input className="block w-full bg-transparent outline-none border-b-2 py-2 px-4  placeholder-white-500 focus:bg-white-600" {...register("name", {required: true, maxLength: {value: 20, message: "name is too long"}})} />
             <label>Adress</label>
-            <input className="block w-full bg-transparent outline-none border-b-2 py-2 px-4  placeholder-white-500 focus:bg-white-600" required {...register("address")} />
-            <label>Type test2</label>
-            <select {...register("cleaningPackage")} className="block w-full bg-transparent outline-none border-b-2 py-2 px-4  placeholder-white-500 focus:bg-white-600" required>
+            <input className="block w-full bg-transparent outline-none border-b-2 py-2 px-4  placeholder-white-500 focus:bg-white-600" required {...register("address", {required: true})} />
+            <label>Type</label>
+            <select {...register("cleaningPackage")} className="block w-full bg-transparent outline-none border-b-2 py-2 px-4  placeholder-white-500 focus:bg-white-600 text-black" required>
                 <option value="basic cleaning">Basic Cleaning</option>
                 <option value="top cleaning">Top Cleaning</option>
                 <option value="diamond cleaning">Diamond Cleaning</option>

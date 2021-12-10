@@ -9,14 +9,39 @@ const [bookings, setBookings] = useState([]);
 
     }, []);
 
+    useEffect(() => {
+        }, [bookings]);
+
     const loadData = async () => {
         const response = await fetch ("http://localhost:8080/booking/viewAll")
             .then(response => response.json())
             .then(data => setBookings(data))
 
-            //TODO error handling
+            //TODO error handling and sessions check
 
     };
+
+    const deleteBooking = (entry) =>{
+        //TODO 48h check
+
+        bookings.map(booking => {
+            if(booking.id === entry.id){
+                console.log(entry.id);
+                fetch("http://localhost:8080/booking/delete/" + entry.id, {
+                    method: "delete"
+                })
+                setBookings(bookings.filter(item => item.id !== entry.id));
+            }
+        })
+    }
+
+
+    /*
+    const dateCheck = (date)=>{
+        let today = new Date();
+        console.log(date);
+
+    }*/
 
     return (
         <div className="flex flex-col">
@@ -34,6 +59,7 @@ const [bookings, setBookings] = useState([]);
                                     Cleaning Service</th>
                                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Adress</th>
+                                  <th></th>
                                 </tr>
                             </thead>
                             <tbody className="bg-white divide-y divide-gray-200">
@@ -43,6 +69,10 @@ const [bookings, setBookings] = useState([]);
                                     <td className="px-6 py-4 text-left whitespace-nowrap text-sm text-gray-900">{entry.date}</td>
                                     <td className="px-6 py-4 text-left whitespace-nowrap text-sm text-gray-900">{entry.cleaningPackage}</td>
                                     <td className="px-6 py-4 text-left whitespace-nowrap text-sm text-gray-900">{entry.address}</td>
+                                    <td className="px-6 py-4 text-left whitespace-nowrap text-sm text-gray-900">
+                                        <button className="bg-red-400 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+                                        type="button" onClick={() => deleteBooking(entry)}>Avboka</button>
+                                    </td>
                                 </tr>
                             )}
                             </tbody>

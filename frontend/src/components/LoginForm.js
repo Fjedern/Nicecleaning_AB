@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, { useState } from "react";
 import { useCookies, withCookies, Cookies } from 'react-cookie';
 import { useNavigate } from 'react-router';
 

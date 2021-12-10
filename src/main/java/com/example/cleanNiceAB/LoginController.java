@@ -39,6 +39,7 @@ public class LoginController {
                 if (user.getPassword().equals(userDetails.getPassword())) {
                     System.out.println("SUCCESS TWO");
                     final String token = JwtUtils.createJWT(user);
+                    System.out.println("TOKEN: " + token);
                     return new JwtResponse(token);
                 }
             }

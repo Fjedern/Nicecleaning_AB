@@ -1,6 +1,7 @@
 import React, {useRef, useState} from "react";
 import { useCookies, withCookies, Cookies } from 'react-cookie';
 import { useNavigate } from 'react-router';
+import Swal from "sweetalert2";
 
 function LoginForm() {
 
@@ -10,6 +11,28 @@ function LoginForm() {
         email: "",
         password:"",
     });
+
+     let loginSuccess = function () {
+         if(cookies != null){
+          Swal.fire({
+             position: 'center',
+              width: 500,
+             icon: 'success',
+             title: 'Välkomen till din sida "${your name}"!',
+             showConfirmButton: true,
+             timer: 3500
+         })
+          navigate('/minsida')
+
+     }
+         else {
+              Swal.fire({
+                 icon: 'error',
+                 title: 'Oops...',
+                 text: 'Fel email eller löserord',
+             })
+         }
+     };
 
 const [cookies, setCookie] = useCookies(['jwt'])
 
@@ -29,14 +52,18 @@ const [cookies, setCookie] = useCookies(['jwt'])
         })
             .then(response => response.json())
             .then(response => setCookie('jwt', response, {path: '/'}))
-            .then(ifUserHaveJwt)
+            .then(loginSuccess)
+
     }
 
+    /*
     const ifUserHaveJwt = function () {
     console.log(cookies);
     if(cookies != null){
         navigate('/minsida')}
     }
+
+     */
 
 
 

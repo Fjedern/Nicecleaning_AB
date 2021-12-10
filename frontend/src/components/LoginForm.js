@@ -5,7 +5,7 @@ function LoginForm() {
 
     const [formData, setFormData] = useState({
         email: "",
-        password:"",
+        password: ""
     });
 
 
@@ -22,11 +22,11 @@ const [cookies, setCookie] = useCookies(['jwt'])
         console.log("här");
         const response = await fetch("http://localhost:8080/login/validation",{
             method: "post",
-            headers: {"Content-Type":'application/json'},
-            body: JSON.stringify(formData),
+            headers: {"Content-Type": 'application/json'},
+            body: JSON.stringify(formData)
         })
-            .then(response => response.json())
-            .then(data => setCookie('jwt', response, {path: '/'}))
+            .then(response => (response.json()) )
+            .then(response => setCookie('jwt', response, {path: '/'}))
 
     }
 
@@ -38,7 +38,6 @@ const [cookies, setCookie] = useCookies(['jwt'])
                     <div className="inline">
 
                     </div>
-
 
                     <label className="block uppercase tracking-wide text-xs font-bold mb-2 text-gray-600">
                         Email
@@ -67,3 +66,4 @@ const [cookies, setCookie] = useCookies(['jwt'])
 }
 
 export default LoginForm;
+

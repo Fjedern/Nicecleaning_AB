@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+
 import '../styles/tailwind.css';
 
 function Footer() {

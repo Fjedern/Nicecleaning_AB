@@ -10,7 +10,9 @@ const [bookings, setBookings] = useState([]);
     }, []);
 
     const loadData = async () => {
-        const response = await fetch ("http://localhost:8080/booking/viewAll")
+        const response = await fetch ("http://localhost:8080/booking/viewAll", {
+
+        })
             .then(response => response.json())
             .then(data => setBookings(data))
 

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+
 import '../styles/tailwind.css';
 import { Link } from "react-router-dom";
 
@@ -24,14 +24,14 @@ function Header (){
                                to="/omoss">
                                 Om Oss
                             </Link>
-                            <a href="#"
+                            <p
                                className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-700 mr-4">
                                 Recensioner
-                            </a>
-                            <a href="#"
+                            </p>
+                            <p
                                className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-700">
                                 Kontakt
-                            </a>
+                            </p>
                         </div>
                     </div>
                 </nav>

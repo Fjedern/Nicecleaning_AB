@@ -1,6 +1,5 @@
 
 import {Link} from "react-router-dom";
-import BookingFormV2 from "../components/BookingFormV2";
 import LoginForm from "../components/LoginForm";
 
 

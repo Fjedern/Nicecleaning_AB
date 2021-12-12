@@ -37,7 +37,7 @@ function RegisterNewCustomerForm() {
         event.preventDefault();
         console.log(formData);
 
-        //TODO add requirements/validation
+        //TODO add validation?
         fetch("http://localhost:8080/user/add",{
             method: "post",
             headers: {"Content-Type":'application/json'},

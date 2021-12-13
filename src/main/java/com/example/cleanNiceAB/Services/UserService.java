@@ -25,6 +25,10 @@ public class UserService {
         return userRepo.save(user);
     }
 
+    public User findUserById(Long id) {
+        return userRepo.getById(id);
+    }
+
     public void deleteUser(Long id){
         userRepo.deleteUserById(id);
     }

@@ -18,7 +18,7 @@ function LoginForm() {
              position: 'center',
               width: 500,
              icon: 'success',
-             title: 'Välkomen till din sida "${your name}"!',
+             title: 'Välkomen till din sida "${cookie.name}"!',
              showConfirmButton: true,
              timer: 3500
          })

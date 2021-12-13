@@ -27,7 +27,7 @@ export default function BookingFormV2() {
                     icon: 'success',
                     title: 'Tack för din bokning! Städa Fint kommer att skicka ut en av sina bästa till er!',
                     imageUrl: 'https://media.giphy.com/media/xsATxBQfeKHCg/giphy.gif',
-                    timer: 3500
+                    timer: 5000
                 })
             } else if (result.isDenied) {
                 Swal.fire('Din order är avbruten (Egentligen inte!)', '', 'warning')

@@ -1,8 +1,9 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Select from "react-select";
 import ReactDatePicker from "react-datepicker";
 import {useForm, Controller} from "react-hook-form";
 import "react-datepicker/dist/react-datepicker.css";
+import Swal from "sweetalert2";
 
 export default function BookingFormV2() {
     const [startDate, setStartDate] = useState(new Date());
@@ -13,12 +14,33 @@ export default function BookingFormV2() {
         }
     });
 
+    const bookingSuccess = function () {
+        Swal.fire({
+            icon: "question",
+            title: 'Tryck OK för att bekräfta din bokning',
+            showDenyButton: true,
+            confirmButtonText: 'OK',
+            denyButtonText: `AVBRYT`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Tack för din bokning! Städa Fint kommer att skicka ut en av sina bästa till er!',
+                    imageUrl: 'https://media.giphy.com/media/xsATxBQfeKHCg/giphy.gif',
+                    timer: 3500
+                })
+            } else if (result.isDenied) {
+                Swal.fire('Din order är avbruten (Egentligen inte!)', '', 'warning')
+            }
+        })
+    };
+
     let handleColor = (time) => {
         return time.getHours() > 12 ? "text-success" : "text-error";
     };
 
-
     const onSubmit = (data) => {
+        bookingSuccess()
         console.log(data)
         console.log(JSON.stringify(data, null, null))
 
@@ -26,6 +48,7 @@ export default function BookingFormV2() {
                 method: "post",
                 headers: {"Content-Type": 'application/json'},
                 body: JSON.stringify(data, null, null),
+
             }
         )
     };
@@ -33,7 +56,7 @@ export default function BookingFormV2() {
 
     return (
         /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className="booking">
             <label>Name</label>
             <input
                 className="block w-full bg-transparent outline-none border-b-2 py-2 px-4  placeholder-white-500 focus:bg-white-600" {...register("name", {

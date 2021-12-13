@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+
 
 const About =()=>{
 
@@ -6,33 +6,38 @@ return(
 <>
 <div className="w-full lg:w-1/2 px-6">
     <ul>
-        <li><a
-            className="focus:outline-none focus:underline  text-xs lg:text-sm leading-none hover:text-brand dark:hover:text-brand text-gray-800 dark:text-gray-50"
-            href="#)">David</a></li>
+        <li><p
+
+            className="focus:outline-none focus:underline  text-xs lg:text-sm leading-none hover:text-brand dark:hover:text-brand text-gray-800 dark:text-gray-50">
+            David</p></li>
+
     </ul>
     </div>
 
     <div className="w-full lg:w-1/2 px-6">
         <ul>
-            <li><a
+            <li><p
                 className="focus:outline-none focus:underline  text-xs lg:text-sm leading-none hover:text-brand dark:hover:text-brand text-gray-800 dark:text-gray-50"
-                href="">Jonas</a></li>
+                >Jonas</p></li>
+
         </ul>
     </div>
 
     <div className="w-full lg:w-1/2 px-6">
         <ul>
-            <li><a
+            <li><p
                 className="focus:outline-none focus:underline  text-xs lg:text-sm leading-none hover:text-brand dark:hover:text-brand text-gray-800 dark:text-gray-50"
-                href="">Sandra</a></li>
+                >Sandra</p></li>
+
         </ul>
     </div>
 
     <div className="w-full lg:w-1/2 px-6">
         <ul>
-            <li><a
-                className="focus:outline-none focus:underline  text-xs lg:text-sm leading-none hover:text-brand dark:hover:text-brand text-gray-800 dark:text-gray-50"
-                href="">Ludvig</a></li>
+            <li><p
+                  className="focus:outline-none focus:underline  text-xs lg:text-sm leading-none hover:text-brand dark:hover:text-brand text-gray-800 dark:text-gray-50"
+                >Ludvig</p></li>
+
         </ul>
     </div>
     </>

@@ -1,7 +1,10 @@
 import React, {useRef, useState} from "react";
+import Swal from "sweetalert2";
+import { useNavigate } from 'react-router';
 
 function RegisterNewCustomerForm() {
     const formRef = useRef();
+    let navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         name: "",
@@ -13,12 +16,28 @@ function RegisterNewCustomerForm() {
         userType: "customer",
     });
 
+    let registerSuccess = function () {
+
+            Swal.fire({
+                position: 'center',
+                width: 800,
+                icon: 'success',
+                title: 'Välkommen till Stada Fint! Vi är väldigt glada att ha Dig som kund!',
+                showConfirmButton: true,
+                confirmButtonText: 'Ok',
+                timer: 4500
+            })
+        navigate('/')
+    };
+
+
 
     const onSubmit=(event)=>{
+        registerSuccess();
         event.preventDefault();
         console.log(formData);
 
-        //TODO add requirements/validation
+        //TODO add validation?
         fetch("http://localhost:8080/user/add",{
             method: "post",
             headers: {"Content-Type":'application/json'},

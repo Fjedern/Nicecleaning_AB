@@ -1,6 +1,7 @@
-import React, {useRef, useState} from "react";
+import React, { useState } from "react";
 import { useCookies, withCookies, Cookies } from 'react-cookie';
 import { useNavigate } from 'react-router';
+import Swal from "sweetalert2";
 
 function LoginForm() {
 
@@ -8,8 +9,30 @@ function LoginForm() {
 
     const [formData, setFormData] = useState({
         email: "",
-        password:"",
+        password: ""
     });
+
+     let loginSuccess = function () {
+         if(cookies != null){
+          Swal.fire({
+             position: 'center',
+              width: 500,
+             icon: 'success',
+             title: 'Välkomen till din sida "${your name}"!',
+             showConfirmButton: true,
+             timer: 3500
+         })
+          navigate('/minsida')
+
+     }
+         else {
+              Swal.fire({
+                 icon: 'error',
+                 title: 'Oops...',
+                 text: 'Fel email eller löserord',
+             })
+         }
+     };
 
 const [cookies, setCookie] = useCookies(['jwt'])
 
@@ -24,21 +47,15 @@ const [cookies, setCookie] = useCookies(['jwt'])
         console.log("här");
         const response = await fetch("http://localhost:8080/login/validation",{
             method: "post",
-            headers: {"Content-Type":'application/json'},
-            body: JSON.stringify(formData),
+            headers: {"Content-Type": 'application/json'},
+            body: JSON.stringify(formData)
         })
+
             .then(response => response.json())
             .then(response => setCookie('jwt', response, {path: '/'}))
-            .then(ifUserHaveJwt)
+            .then(loginSuccess)
+
     }
-
-    const ifUserHaveJwt = function () {
-    console.log(cookies);
-    if(cookies != null){
-        navigate('/minsida')}
-    }
-
-
 
 
     return (
@@ -48,7 +65,6 @@ const [cookies, setCookie] = useCookies(['jwt'])
                     <div className="inline">
 
                     </div>
-
 
                     <label className="block uppercase tracking-wide text-xs font-bold mb-2 text-gray-600">
                         Email
@@ -77,3 +93,4 @@ const [cookies, setCookie] = useCookies(['jwt'])
 }
 
 export default LoginForm;
+

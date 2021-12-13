@@ -8,9 +8,10 @@ const UserPage =()=>{
 
     const [cookies, setCookie] = useCookies(['jwt'])
 
-    console.log(cookies.jwt.token);
+    //console.log(cookies.jwt.token);
 
-    const [nameOfUser, setNameOfUser] = useState({});
+    const [nameOfUser, setNameOfUser] = useState("");
+    //console.log(nameOfUser);
 
     useEffect(() => {
         loadData();
@@ -18,22 +19,24 @@ const UserPage =()=>{
         }, []);
 
         const loadData = async () => {
+
             const response = await fetch ("http://localhost:8080/auth/getUsername",{
             method: "post",
             headers: {"Content-Type":'application/json',
                       'Accept': 'application/json'},
             body: JSON.stringify(cookies.jwt.token),
             })
-                .then(response => response.json())
-                .then(response => setNameOfUser(response))
-                .then(console.log(nameOfUser))
+                .then(response =>
+                    response.text())
+                    .then(data => setNameOfUser(data))
+
         };
 
 
 
     return (
         <div className="container mx-auto">
-            <h1>Namn:</h1>
+            <h1>Namn: {nameOfUser}</h1>
             <BookingFormV2/>
         </div>
 

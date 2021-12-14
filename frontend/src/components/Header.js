@@ -1,9 +1,18 @@
 
 import '../styles/tailwind.css';
 import { Link } from "react-router-dom";
+import { useCookies, withCookies, Cookies } from 'react-cookie';
+import { useNavigate } from 'react-router';
 
 function Header (){
 
+let navigate = useNavigate();
+const [cookies, setCookie, removeCookie] = useCookies(['jwt'])
+
+const onLogout = ()=> {
+ removeCookie('jwt');
+ navigate('/');
+}
 
     return (
                 <nav className="bg-gray-400 flex items-center justify-between flex-wrap p-6">
@@ -32,6 +41,8 @@ function Header (){
                                className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-700">
                                 Kontakt
                             </p>
+                            <input className="bg-red-700 hover:bg-red-900 text-white font-bold float-right py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            type="button" onClick={onLogout} value="Logga ut"/>
                         </div>
                     </div>
                 </nav>

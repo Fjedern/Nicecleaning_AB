@@ -29,7 +29,7 @@ public class JwtUtils {
         Key signingKey = new SecretKeySpec(apiKeySecretBytes, sa.getJcaName());
 
         JwtBuilder builder = Jwts.builder()
-                .setId(user.getId().toString())
+                .setId(user.getUserId().toString())
                 .setIssuedAt(now)
                 .setIssuer("StädaFint AB")
                 .setSubject("user info")

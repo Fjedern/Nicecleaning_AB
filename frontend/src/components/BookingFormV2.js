@@ -41,8 +41,8 @@ export default function BookingFormV2() {
 
     const onSubmit = (data) => {
         bookingSuccess()
-        console.log(data)
-        console.log(JSON.stringify(data, null, null))
+        console.log("Booking data: "+data)
+        console.log("Booking JSONdata: "+JSON.stringify(data, null, null))
 
         fetch("http://localhost:8080/booking/add", {
                 method: "post",
@@ -57,6 +57,10 @@ export default function BookingFormV2() {
     return (
         /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
         <form onSubmit={handleSubmit(onSubmit)} className="booking">
+            <label>Customer ID</label>
+            <input
+                className="block w-full bg-transparent outline-none border-b-2 py-2 px-4  placeholder-white-500 focus:bg-white-600"
+                required {...register("cusID", {required: true})} />
             <label>Name</label>
             <input
                 className="block w-full bg-transparent outline-none border-b-2 py-2 px-4  placeholder-white-500 focus:bg-white-600" {...register("name", {

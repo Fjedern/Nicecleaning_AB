@@ -34,7 +34,8 @@ public class JwtUtils {
                 .setIssuer("StädaFint AB")
                 .setSubject("user info")
                 .signWith(sa, signingKey)
-                .setExpiration(expire);
+                .setExpiration(expire)
+                .claim("UserType", user.getUserType());
 
         return builder.compact();
     }

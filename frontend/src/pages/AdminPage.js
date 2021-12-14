@@ -16,32 +16,28 @@ const UserPage =()=>{
     useEffect(() => {
         loadData();
 
-        }, []);
+    }, []);
 
-        const loadData = async () => {
+    const loadData = async () => {
 
-            const response = await fetch ("http://localhost:8080/auth/getUsername",{
+        const response = await fetch ("http://localhost:8080/auth/getUsername",{
             method: "post",
             headers: {"Content-Type":'application/json',
-                      'Accept': 'application/json'},
+                'Accept': 'application/json'},
             body: JSON.stringify(cookies.jwt.token),
-            })
-                .then(response =>
-                    response.text())
-                    .then(data => setNameOfUser(data))
+        })
+            .then(response =>
+                response.text())
+            .then(data => setNameOfUser(data))
 
-        };
+    };
 
-    if (nameOfUser === "admin") {
-        return <Navigate to="/AdminPage"/>
-    } else {
-        return (
-            <div className="container mx-auto">
-                <h1>Namn: {nameOfUser}</h1>
-                <BookingFormV2/>
-            </div>
-        );
-    }
+    return (
+        <div className="container mx-auto">
+            <h1>Welcome! {nameOfUser}</h1>
+            <BookingFormV2/>
+        </div>
+    );
 }
 
 export default UserPage;

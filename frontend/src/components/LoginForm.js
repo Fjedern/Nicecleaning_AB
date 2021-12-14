@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useCookies, withCookies, Cookies } from 'react-cookie';
-import { useNavigate } from 'react-router';
+import React, {useState} from "react";
+import {useCookies, withCookies, Cookies} from 'react-cookie';
+import {useNavigate} from 'react-router';
 import Swal from "sweetalert2";
 
 function LoginForm() {
@@ -12,40 +12,39 @@ function LoginForm() {
         password: ""
     });
 
-     let loginSuccess = function () {
-         if(cookies != null){
-          Swal.fire({
-             position: 'center',
-              width: 500,
-             icon: 'success',
-             title: 'Välkomen till din sida "${your name}"!',
-             showConfirmButton: true,
-             timer: 3500
-         })
-          navigate('/minsida')
+    let loginSuccess = function () {
+        if (cookies != null) {
+            Swal.fire({
+                position: 'center',
+                width: 500,
+                icon: 'success',
+                title: 'Välkomen till din sida "${your name}"!',
+                showConfirmButton: true,
+                timer: 3500
+            })
+            navigate('/minsida')
 
-     }
-         else {
-              Swal.fire({
-                 icon: 'error',
-                 title: 'Oops...',
-                 text: 'Fel email eller löserord',
-             })
-         }
-     };
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Fel email eller lösenord',
+            })
+        }
+    };
 
-const [cookies, setCookie] = useCookies(['jwt'])
+    const [cookies, setCookie] = useCookies(['jwt'])
 
     const onSubmit = (event) => {
         event.preventDefault();
         console.log(formData);
         loadData();
     };
-        //TODO add requirements/validation
+    //TODO add requirements/validation
 
-        const loadData = async () => {
+    const loadData = async () => {
         console.log("här");
-        const response = await fetch("http://localhost:8080/login/validation",{
+        const response = await fetch("http://localhost:8080/login/validation", {
             method: "post",
             headers: {"Content-Type": 'application/json'},
             body: JSON.stringify(formData)

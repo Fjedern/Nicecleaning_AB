@@ -11,7 +11,7 @@ const [cookies, setCookie, removeCookie] = useCookies(['jwt'])
 
 const onLogout = ()=> {
  removeCookie('jwt');
- navigate('/');
+ navigate('/login');
 }
 
     return (

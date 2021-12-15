@@ -15,6 +15,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import PrivateRoute from "../components/PrivateRoute";
 
 const App = () => {
 
@@ -24,10 +25,19 @@ const App = () => {
             <Router>
                 <Header/>
                 <Routes>
-                    <Route exact path="/" element={<MainPage />} />
+                    <Route exact path="/" element={<PrivateRoute/>}>
+                        <Route path="/" element={<UserPage />} />
+                    </Route>
+
+
+                    <Route exact path="/login" element={<MainPage />} />
+
+
                     <Route path="/allbookings" element={<AllBookings />} />
                     <Route path="/register" element={<Register />} />
-                    <Route path="/minsida" element={<UserPage />} />
+
+
+
                     <Route path="/omoss" element={<About />} />
                 </Routes>
                 <Footer/>

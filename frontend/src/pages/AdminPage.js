@@ -4,7 +4,7 @@ import { useCookies, withCookies, Cookies } from 'react-cookie';
 import {Navigate, useNavigate} from 'react-router';
 import React, {useEffect, useState} from "react";
 
-const UserPage =()=>{
+const AdminPage =()=>{
 
     const [cookies, setCookie] = useCookies(['jwt'])
 

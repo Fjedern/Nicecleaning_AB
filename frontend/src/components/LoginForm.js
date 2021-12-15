@@ -22,7 +22,7 @@ function LoginForm() {
              showConfirmButton: true,
              timer: 3500
          })
-          navigate('/minsida')
+          navigate('/')
 
      }
          else {
@@ -40,7 +40,7 @@ const [cookies, setCookie] = useCookies(['jwt'])
         event.preventDefault();
         console.log(formData);
         loadData();
-        getUserType();
+
     };
     //TODO add requirements/validation
     const [userType, setUserType] = useState("");

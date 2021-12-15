@@ -22,7 +22,12 @@ function LoginForm() {
                 showConfirmButton: true,
                 timer: 3500
             })
-            navigate('/minsida')
+            if(userType === "admin"){
+                navigate('/AdminPage')
+            } {
+                navigate('/minsida')
+            }
+
 
         } else {
             Swal.fire({
@@ -39,8 +44,10 @@ function LoginForm() {
         event.preventDefault();
         console.log(formData);
         loadData();
+        getUserType();
     };
     //TODO add requirements/validation
+    const [userType, setUserType] = useState("");
 
     const loadData = async () => {
         console.log("här");
@@ -53,7 +60,19 @@ function LoginForm() {
             .then(response => response.json())
             .then(response => setCookie('jwt', response, {path: '/'}))
             .then(loginSuccess)
+    }
 
+    const getUserType = async () => {
+        const response = await fetch ("http://localhost:8080/auth/getUserType",{
+            method: "post",
+            headers: {"Content-Type":'application/json',
+                'Accept': 'application/json'},
+            body: JSON.stringify(cookies.jwt.token),
+        })
+            .then(response =>
+                response.text())
+            .then(data => setUserType(data))
+        console.log(userType);
     }
 
 

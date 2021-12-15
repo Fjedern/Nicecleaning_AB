@@ -32,16 +32,12 @@ const UserPage =()=>{
 
         };
 
-    if (nameOfUser === "admin") {
-        return <Navigate to="/AdminPage"/>
-    } else {
-        return (
-            <div className="container mx-auto">
-                <h1>Namn: {nameOfUser}</h1>
-                <BookingFormV2/>
-            </div>
-        );
-    }
+    return (
+        <div className="container mx-auto">
+            <h1>Namn: {nameOfUser}</h1>
+            <BookingFormV2/>
+        </div>
+    );
 }
 
 export default UserPage;

@@ -29,7 +29,7 @@ public class Booking implements Serializable {
     private String name;
     @Column(name = "date")
     private Date date;
-    @Column(name = "cusID")
+    @Column(name = "user_id")
     private String cusID;
 
 }

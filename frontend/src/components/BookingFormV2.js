@@ -1,12 +1,16 @@
 import React, {useEffect, useState} from "react";
+import { useCookies, withCookies, Cookies } from 'react-cookie';
 import Select from "react-select";
 import ReactDatePicker from "react-datepicker";
-import {useForm, Controller} from "react-hook-form";
+import {useForm, Controller, useWatch} from "react-hook-form";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
 
-export default function BookingFormV2() {
+export default function BookingFormV2({userID, userName}) {
     const [startDate, setStartDate] = useState(new Date());
+    //const [cookies, setCookie] = useCookies(['jwt'])
+    const [show, setShow] = React.useState(true);
+
 
     const {register, control, handleSubmit} = useForm({
         defaultValues: {
@@ -15,6 +19,7 @@ export default function BookingFormV2() {
     });
 
     const bookingSuccess = function () {
+        console.log("COOKIE: ",userID)
         Swal.fire({
             icon: "question",
             title: 'Tryck OK för att bekräfta din bokning',
@@ -25,7 +30,7 @@ export default function BookingFormV2() {
             if (result.isConfirmed) {
                 Swal.fire({
                     icon: 'success',
-                    title: 'Tack för din bokning! Städa Fint kommer att skicka ut en av sina bästa till er!',
+                    title: userName+', tack för din bokning! Städa Fint kommer att skicka ut en av sina bästa medarbetare till er!',
                     imageUrl: 'https://media.giphy.com/media/xsATxBQfeKHCg/giphy.gif',
                     timer: 5000
                 })
@@ -57,11 +62,13 @@ export default function BookingFormV2() {
     return (
         /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
         <form onSubmit={handleSubmit(onSubmit)} className="booking">
-            <label>Customer ID</label>
-            <input
-                className="block w-full bg-transparent outline-none border-b-2 py-2 px-4  placeholder-white-500 focus:bg-white-600"
-                required {...register("cusID", {required: true})} />
-            <label>Name</label>
+            <br/>
+            <label>Customer-ID</label>
+            {show && <input value={userID}
+                className="block w-full bg-transparent outline-none border-b-2 py-2 px-4  placeholder-white-500 focus:bg-white-600" {...register("cusID", {
+                required: true
+            })} />}
+            <label>För- och efternamn</label>
             <input
                 className="block w-full bg-transparent outline-none border-b-2 py-2 px-4  placeholder-white-500 focus:bg-white-600" {...register("name", {
                 required: true,

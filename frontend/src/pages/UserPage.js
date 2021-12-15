@@ -8,10 +8,11 @@ const UserPage =()=>{
 
     const [cookies, setCookie] = useCookies(['jwt'])
 
-    //console.log(cookies.jwt.token);
+    const [loggedUser, setLoggedUser] = useState({
 
-    const [nameOfUser, setNameOfUser] = useState("");
-    //console.log(nameOfUser);
+            userName: "",
+            userID: 0
+    });
 
     useEffect(() => {
         loadData();
@@ -27,17 +28,16 @@ const UserPage =()=>{
             body: JSON.stringify(cookies.jwt.token),
             })
                 .then(response =>
-                    response.text())
-                    .then(data => setNameOfUser(data))
+                    response.json())
+                    .then(data => setLoggedUser(data))
+
 
         };
 
-
-
     return (
         <div className="container mx-auto">
-            <h1>Namn: {nameOfUser}</h1>
-            <BookingFormV2/>
+            <h1 className="text-lg text-blue-900">Välkommen {loggedUser.userName}</h1>
+            <BookingFormV2 userID={loggedUser.userID} userName={loggedUser.userName}/>
         </div>
 
     );

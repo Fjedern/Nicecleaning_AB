@@ -30,4 +30,8 @@ public class Booking implements Serializable {
     @Column(name = "date")
     private Date date;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "FK_customerId", referencedColumnName = "id")
+    private User user;
+
 }

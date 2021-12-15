@@ -2,6 +2,7 @@ package com.example.cleanNiceAB;
 
 import com.example.cleanNiceAB.Services.BookingService;
 import com.example.cleanNiceAB.entities.Booking;
+import lombok.Value;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,8 +28,10 @@ public class BookingController {
 
     @PostMapping("/add")
     public ResponseEntity<Booking> addBooking(@RequestBody Booking booking){
+        System.out.println(booking.toString());
         Booking newBooking = bookingService.addBooking(booking);
-        return new ResponseEntity<>(newBooking, HttpStatus.CREATED);
+        //return ResponseEntity.of()
+        return new ResponseEntity<>(newBooking, HttpStatus.CREATED); //newBooking = should be DTO
     }
 
     @GetMapping("/viewAll")
@@ -47,6 +50,12 @@ public class BookingController {
         bookingService.deleteBooking(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    //DTO
+    @Value
+    public static class DTOBooking {
+        String ;
+        String userID;
 
 
 

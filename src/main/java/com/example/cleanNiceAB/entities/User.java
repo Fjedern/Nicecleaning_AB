@@ -37,5 +37,9 @@ public class User implements Serializable {
     @Column(nullable = false, columnDefinition = "TINYINT(1)", name="is_company")
     private boolean company;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL) //cascade means delete a user and that users booking will be removed
+    private Booking booking;
+
+
 
 }

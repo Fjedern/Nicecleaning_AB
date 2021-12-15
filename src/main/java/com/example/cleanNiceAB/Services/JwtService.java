@@ -35,7 +35,7 @@ public class JwtService {
         User foundUser;
 
         for(User user : userList){
-            if (user.getId().equals(Long.valueOf(claims.getId()))){
+            if (user.getUserId().equals(Long.valueOf(claims.getId()))){
                 foundUser = user;
                 return foundUser;
             }

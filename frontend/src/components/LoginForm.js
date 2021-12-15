@@ -12,33 +12,29 @@ function LoginForm() {
         password: ""
     });
 
-    let loginSuccess = function () {
-        if (cookies != null) {
-            Swal.fire({
-                position: 'center',
-                width: 500,
-                icon: 'success',
-                title: 'Välkomen till din sida "${your name}"!',
-                showConfirmButton: true,
-                timer: 3500
-            })
-            if(userType === "admin"){
-                navigate('/AdminPage')
-            } {
-                navigate('/minsida')
-            }
+     let loginSuccess = function () {
+         if(cookies != null){
+          Swal.fire({
+             position: 'center',
+              width: 500,
+             icon: 'success',
+             title: 'Välkomen till din sida "${cookie.name}"!',
+             showConfirmButton: true,
+             timer: 3500
+         })
+          navigate('/minsida')
 
+     }
+         else {
+              Swal.fire({
+                 icon: 'error',
+                 title: 'Oops...',
+                 text: 'Fel email eller löserord',
+             })
+         }
+     };
 
-        } else {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Fel email eller lösenord',
-            })
-        }
-    };
-
-    const [cookies, setCookie] = useCookies(['jwt'])
+const [cookies, setCookie] = useCookies(['jwt'])
 
     const onSubmit = (event) => {
         event.preventDefault();

@@ -13,9 +13,9 @@ public class JwtController {
     JwtService jwtService;
 
     @PostMapping("/getUsername")
-    public String getUsernameToFrontend(@RequestBody String token){
-        System.out.println(token);
+    public MyPageDetails getUsernameToFrontend(@RequestBody String token){
         token = token.replace("\"", "");
+        System.out.println("Token: " + token);
         boolean isTokenValid = jwtService.jwtIsValid(token);
 
         System.out.println("inne");
@@ -23,10 +23,42 @@ public class JwtController {
         if (isTokenValid){
 
             User user = jwtService.getJwtOwner(token);
-            System.out.println(user.getName());
-            return user.getName();
+            MyPageDetails tokenDetails = new MyPageDetails(user.getName(), user.getUserId().toString());
+            //String[] returnUser = {user.getName(), user.getUserId().toString()};
+
+            System.out.println(user.getName() + "ID: "+ user.getUserId());
+            return tokenDetails;
         }
         return null;
+    }
+
+    public static class MyPageDetails {
+        private String userName;
+        private String userID;
+
+        public MyPageDetails() {
+        }
+
+        public MyPageDetails(String userName, String userID) {
+            this.userName = userName;
+            this.userID = userID;
+        }
+
+        public String getUserName() {
+            return userName;
+        }
+
+        public void setUserName(String userName) {
+            this.userName = userName;
+        }
+
+        public String getUserID() {
+            return userID;
+        }
+
+        public void setUserID(String userID) {
+            this.userID = userID;
+        }
     }
 
 

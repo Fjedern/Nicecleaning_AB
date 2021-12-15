@@ -37,7 +37,6 @@ public class JwtUtils {
                 .setExpiration(expire)
                 .claim("UserType", user.getUserType());
 
-
         return builder.compact();
     }
 

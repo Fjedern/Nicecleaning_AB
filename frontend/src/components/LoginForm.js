@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useCookies, withCookies, Cookies } from 'react-cookie';
-import { useNavigate } from 'react-router';
+import React, {useState} from "react";
+import {useCookies, withCookies, Cookies} from 'react-cookie';
+import {useNavigate} from 'react-router';
 import Swal from "sweetalert2";
 
 function LoginForm() {
@@ -22,7 +22,7 @@ function LoginForm() {
              showConfirmButton: true,
              timer: 3500
          })
-          navigate('/minsida')
+          navigate('/')
 
      }
          else {
@@ -40,12 +40,14 @@ const [cookies, setCookie] = useCookies(['jwt'])
         event.preventDefault();
         console.log(formData);
         loadData();
-    };
-        //TODO add requirements/validation
 
-        const loadData = async () => {
+    };
+    //TODO add requirements/validation
+    const [userType, setUserType] = useState("");
+
+    const loadData = async () => {
         console.log("här");
-        const response = await fetch("http://localhost:8080/login/validation",{
+        const response = await fetch("http://localhost:8080/login/validation", {
             method: "post",
             headers: {"Content-Type": 'application/json'},
             body: JSON.stringify(formData)
@@ -54,7 +56,19 @@ const [cookies, setCookie] = useCookies(['jwt'])
             .then(response => response.json())
             .then(response => setCookie('jwt', response, {path: '/'}))
             .then(loginSuccess)
+    }
 
+    const getUserType = async () => {
+        const response = await fetch ("http://localhost:8080/auth/getUserType",{
+            method: "post",
+            headers: {"Content-Type":'application/json',
+                'Accept': 'application/json'},
+            body: JSON.stringify(cookies.jwt.token),
+        })
+            .then(response =>
+                response.text())
+            .then(data => setUserType(data))
+        console.log(userType);
     }
 
 

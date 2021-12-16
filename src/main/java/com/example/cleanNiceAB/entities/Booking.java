@@ -9,6 +9,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -30,9 +32,11 @@ public class Booking implements Serializable {
     private String name;
     @Column(name = "date")
     private Date date;
-    
+
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "FK_customerId", referencedColumnName = "id")
     private User user;
 
+    @ManyToMany(mappedBy = "bookings", fetch = FetchType.LAZY)
+    private Set<Employee> employees = new HashSet<>();
 }

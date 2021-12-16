@@ -62,7 +62,7 @@ export default function BookingFormV2({userID, userName}) {
         )
     };
 
-
+    //onClick={() => setValue("user", userID)}
     return (
         /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
         <form onSubmit={handleSubmit(onSubmit)} className="booking">
@@ -100,7 +100,7 @@ export default function BookingFormV2({userID, userName}) {
                     />
                 }
             />
-            <input className="inline-block bg-white-500 text-black rounded shadow py-2 px-5 text-s" type="submit" onClick={() => setValue("user", userID)}/>
+            <input className="inline-block bg-white-500 text-black rounded shadow py-2 px-5 text-s" type="submit" onClick={() => setValue("user", {id: userID})}/>
         </form>
     );
 }

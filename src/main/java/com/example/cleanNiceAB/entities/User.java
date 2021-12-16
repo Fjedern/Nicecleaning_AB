@@ -1,5 +1,7 @@
 package com.example.cleanNiceAB.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,6 +9,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Arrays;
 
 @Entity
 @NoArgsConstructor
@@ -37,9 +40,9 @@ public class User implements Serializable {
     @Column(nullable = false, columnDefinition = "TINYINT(1)", name="is_company")
     private boolean company;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL) //cascade means delete a user and that users booking will be removed
-    private Booking booking;
 
+    @OneToOne(cascade = CascadeType.ALL) //removed mappaed by ="user" and cascade = CascadeType.ALL, cascade means delete a user and that users booking will be removed
+    private Booking booking;
 
 
 }

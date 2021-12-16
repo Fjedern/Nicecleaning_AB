@@ -16,10 +16,8 @@ public class JwtController {
     @PostMapping("/getUsername")
     public MyPageDetails getUsernameToFrontend(@RequestBody String token){
         token = token.replace("\"", "");
-        System.out.println("Token: " + token);
+        //System.out.println("Token: " + token);
         boolean isTokenValid = jwtService.jwtIsValid(token);
-
-        System.out.println("inne");
 
         if (isTokenValid){
 
@@ -27,7 +25,7 @@ public class JwtController {
             MyPageDetails tokenDetails = new MyPageDetails(user.getName(), user.getId().toString());
             //String[] returnUser = {user.getName(), user.getUserId().toString()};
 
-            System.out.println(tokenDetails.getUserName() + "ID: "+ tokenDetails.getUserID());
+            //System.out.println(tokenDetails.getUserName() + "ID: "+ tokenDetails.getUserID());
             return tokenDetails;
         }
         return null;

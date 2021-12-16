@@ -1,36 +1,36 @@
-import React, {useState} from "react";
 
 
-function UserInfo({props}) {
+function UserInfo({ userName, userAddress, userEmail, userPhoneNr }) {
 
     return (
-        <div className="table w-full ...">
-            <div className="table-header-group ...">
-                <div className="table-row">
-                    <div className="table-cell text-left ..."><p>Välkommen!</p><br/>
-                    <p>{props}</p>
-                        <p>{props}</p>
-                        <p>{props}</p>
+        <div>
+
+        <div className="p-4 ">
+
+            <h5 className=" mt-4 text-gray-900 text-xl font-medium mb-2">Välkommen till din sida, {userName}!</h5>
+            <div className="flex justify-end">
+                <div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
+
+                    <div className="p-6 flex flex-col justify-start">
+
+                        <h5 className="text-gray-900 text-xl font-medium mb-2">Dina uppgifter</h5>
+                        <p className="text-gray-600 text-xs">Adress</p>
+                        <p className="text-gray-700 text-base mb-4">
+                            {userAddress}
+                        </p>
+                        <p className="text-gray-600 text-xs">Telefonnummer</p>
+                        <p className="text-gray-700 text-base mb-4">
+                            {userPhoneNr}
+                        </p>
+                        <p className="text-gray-600 text-xs">Email</p>
+                        <p className="text-gray-700 text-base mb-4">
+                            {userEmail}
+                        </p>
+
                     </div>
-                    <div className="table-cell text-left ...">Adress
-                        <div>{props.userName}</div></div>
-                    <div className="table-cell text-left ...">{props}</div>
                 </div>
             </div>
-            <div className="table-row-group">
-                <div className="table-row">
-                    <div className="table-cell ...">Chocolate Starfish And The Hot Dog Flavored Water</div>
-
-                </div>
-                <div className="table-row">
-                    <div className="table-cell ...">Significant Other</div>
-
-                </div>
-                <div className="table-row">
-                    <div className="table-cell ...">Three Dollar Bill, Y’all $</div>
-
-                </div>
-            </div>
+        </div>
         </div>
     );
 }

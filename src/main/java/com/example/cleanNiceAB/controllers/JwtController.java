@@ -14,23 +14,24 @@ public class JwtController {
     JwtService jwtService;
 
     @PostMapping("/getUsername")
-    public MyPageDetails getUsernameToFrontend(@RequestBody String token){
+    public MyPageDetails getUsernameToFrontend(@RequestBody String token) {
         token = token.replace("\"", "");
 
         //System.out.println("Token: " + token);
 
         boolean isTokenValid = jwtService.jwtIsValid(token);
 
-        if (isTokenValid){
+        if (isTokenValid) {
 
             User user = jwtService.getJwtOwner(token);
 
             //System.out.println(tokenDetails.getUserName() + "ID: "+ tokenDetails.getUserID());
 
-            MyPageDetails tokenDetails = new MyPageDetails(user.getName(), user.getId().toString(), user.getUserType());
+            MyPageDetails tokenDetails = new MyPageDetails(
+                    user.getName(), user.getId().toString(), user.getUserType(), user.getAddress(), user.getPhoneNr(), user.getEmail());
             //String[] returnUser = {user.getName(), user.getUserId().toString()};
 
-            System.out.println(user.getName() + "ID: "+ user.getId());
+            System.out.println(user.getName() + "ID: " + user.getId());
 
             return tokenDetails;
         }
@@ -44,11 +45,17 @@ public class JwtController {
         String userName;
         String userID;
         String userType;
+        String userAddress;
+        String userPhoneNr;
+        String userEmail;
 
-        public MyPageDetails(String userName, String userID, String userType) {
+        public MyPageDetails(String userName, String userID, String userType, String userAddress, String userPhoneNr, String userEmail) {
             this.userName = userName;
             this.userID = userID;
             this.userType = userType;
+            this.userAddress = userAddress;
+            this.userPhoneNr = userPhoneNr;
+            this.userEmail = userEmail;
         }
 
         public String getUserName() {
@@ -59,8 +66,20 @@ public class JwtController {
             return userID;
         }
 
-        public String getUserType() { return userType; }
+        public String getUserType() {
+            return userType;
+        }
+
+        public String getUserAddress() {
+            return userAddress;
+        }
+
+        public String getUserPhoneNr() {
+            return userPhoneNr;
+        }
+
+        public String getUserEmail() {
+            return userEmail;
+        }
     }
-
-
 }

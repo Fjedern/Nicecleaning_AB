@@ -61,12 +61,8 @@ export default function BookingFormV2({userID, userName}) {
     return (
         /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
         <form onSubmit={handleSubmit(onSubmit)} className="booking">
-            <br/>
-            <label>Customer-ID</label>
-            {show && <input value={userID}
-                className="block w-full bg-transparent outline-none border-b-2 py-2 px-4  placeholder-white-500 focus:bg-white-600" {...register("cusID", {
-                required: true
-            })} />}
+
+
             <label>För- och efternamn</label>
             <input
                 className="block w-full bg-transparent outline-none border-b-2 py-2 px-4  placeholder-white-500 focus:bg-white-600" {...register("name", {

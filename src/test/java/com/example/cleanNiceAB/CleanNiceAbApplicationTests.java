@@ -1,9 +1,8 @@
 package com.example.cleanNiceAB;
 
 import com.example.cleanNiceAB.Services.JwtService;
+import com.example.cleanNiceAB.controllers.LoginController;
 import com.example.cleanNiceAB.entities.User;
-import com.example.cleanNiceAB.exeptions.NoSuchUserNameOrPasswordException;
-import com.mysql.cj.log.Log;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

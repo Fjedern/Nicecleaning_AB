@@ -49,7 +49,6 @@ const AdminPage = () => {
                 till user
             </button>
             <h1>All bookings</h1>
-            <div style=hei></div>
             <AllBookings/>
         </div>
     );

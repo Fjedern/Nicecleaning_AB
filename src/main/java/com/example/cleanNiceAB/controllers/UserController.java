@@ -1,4 +1,4 @@
-package com.example.cleanNiceAB;
+package com.example.cleanNiceAB.controllers;
 
 import com.example.cleanNiceAB.Services.UserService;
 import com.example.cleanNiceAB.entities.User;

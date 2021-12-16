@@ -19,6 +19,7 @@ const UserPage = () => {
             navigate("/login")
         } else {
             loadData();
+            console.log("")
         }
 
     }, []);

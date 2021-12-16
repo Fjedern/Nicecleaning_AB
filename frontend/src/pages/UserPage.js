@@ -3,10 +3,13 @@ import BookingFormV2 from "../components/BookingFormV2";
 import {useCookies, withCookies, Cookies} from 'react-cookie';
 import {Navigate, useNavigate} from 'react-router';
 import React, {useEffect, useState} from "react";
+import ActiveUser from "../components/ActiveUser";
 
 const UserPage = () => {
     let navigate = useNavigate();
     const [cookies, setCookie] = useCookies(['jwt'])
+
+    console.log(ActiveUser.name)
 
     const [nameOfUser, setNameOfUser] = useState(
         {

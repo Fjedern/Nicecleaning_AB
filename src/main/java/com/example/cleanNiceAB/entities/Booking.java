@@ -1,5 +1,6 @@
 package com.example.cleanNiceAB.entities;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,6 +33,9 @@ public class Booking implements Serializable {
     @Column(name = "date")
     private Date date;
 
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "FK_customerId", referencedColumnName = "id")
+    private User user;
 
     @ManyToMany(mappedBy = "bookings", fetch = FetchType.LAZY)
     private Set<Employee> employees = new HashSet<>();

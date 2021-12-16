@@ -11,15 +11,15 @@ export default function BookingFormV2({userID, userName}) {
     //const [cookies, setCookie] = useCookies(['jwt'])
     const [show, setShow] = React.useState(true);
 
-
-    const {register, control, handleSubmit} = useForm({
+    const {register, control, handleSubmit, setValue} = useForm({
         defaultValues: {
-            date: new Date()
+            date: new Date(),
+
         }
     });
 
+
     const bookingSuccess = function () {
-        console.log("COOKIE: ",userID)
         Swal.fire({
             icon: "question",
             title: 'Tryck OK för att bekräfta din bokning',
@@ -46,28 +46,23 @@ export default function BookingFormV2({userID, userName}) {
 
     const onSubmit = (data) => {
         bookingSuccess()
-        console.log("Booking data: "+data)
+      
         console.log("Booking JSONdata: "+JSON.stringify(data, null, null))
 
         fetch("http://localhost:8080/booking/add", {
                 method: "post",
                 headers: {"Content-Type": 'application/json'},
                 body: JSON.stringify(data, null, null),
-
             }
         )
     };
 
-
+    //onClick={() => setValue("user", userID)}
     return (
         /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
         <form onSubmit={handleSubmit(onSubmit)} className="booking">
-            <br/>
-            <label>Customer-ID</label>
-            {show && <input value={userID}
-                className="block w-full bg-transparent outline-none border-b-2 py-2 px-4  placeholder-white-500 focus:bg-white-600" {...register("cusID", {
-                required: true
-            })} />}
+
+
             <label>För- och efternamn</label>
             <input
                 className="block w-full bg-transparent outline-none border-b-2 py-2 px-4  placeholder-white-500 focus:bg-white-600" {...register("name", {
@@ -79,6 +74,7 @@ export default function BookingFormV2({userID, userName}) {
                 className="block w-full bg-transparent outline-none border-b-2 py-2 px-4  placeholder-white-500 focus:bg-white-600"
                 required {...register("address", {required: true})} />
             <label>Type</label>
+
             <select {...register("cleaningPackage")}
                     className="block w-full bg-transparent outline-none border-b-2 py-2 px-4  placeholder-white-500 focus:bg-white-600 text-black"
                     required>
@@ -101,7 +97,7 @@ export default function BookingFormV2({userID, userName}) {
                     />
                 }
             />
-            <input className="inline-block bg-white-500 text-black rounded shadow py-2 px-5 text-s" type="submit"/>
+            <input className="inline-block bg-white-500 text-black rounded shadow py-2 px-5 text-s" type="submit" onClick={() => setValue("user", {id: userID})}/>
         </form>
     );
 }

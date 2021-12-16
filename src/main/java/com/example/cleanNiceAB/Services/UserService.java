@@ -25,12 +25,12 @@ public class UserService {
         return userRepo.save(user);
     }
 
-    public User findUserById(Long id) {
+    public User findUserByUserId(Long id) {
         return userRepo.getById(id);
     }
 
     public void deleteUser(Long id){
-        userRepo.deleteUserById(id);
+        userRepo.deleteUserByUserId(id);
     }
 
     public List<User> getAll() {

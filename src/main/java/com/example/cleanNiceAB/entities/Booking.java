@@ -30,6 +30,8 @@ public class Booking implements Serializable {
     private String name;
     @Column(name = "date")
     private Date date;
+    @Column(name = "user_id")
+    private String cusID;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE) //removed
     @JoinColumn(name = "FK_customerId", referencedColumnName = "id")

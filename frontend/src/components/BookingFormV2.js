@@ -10,8 +10,6 @@ export default function BookingFormV2({userID, userName}) {
     const [startDate, setStartDate] = useState(new Date());
     //const [cookies, setCookie] = useCookies(['jwt'])
     const [show, setShow] = React.useState(true);
-    //const [userIdHere, setUserIdHere] = useState(userID); //is this secure?
-
 
     const {register, control, handleSubmit, setValue} = useForm({
         defaultValues: {
@@ -22,7 +20,6 @@ export default function BookingFormV2({userID, userName}) {
 
 
     const bookingSuccess = function () {
-        //console.log("COOKIE: ",userID)
         Swal.fire({
             icon: "question",
             title: 'Tryck OK för att bekräfta din bokning',
@@ -49,10 +46,8 @@ export default function BookingFormV2({userID, userName}) {
 
     const onSubmit = (data) => {
         bookingSuccess()
-        console.log("userId: "+ userID)
-
+      
         console.log("Booking JSONdata: "+JSON.stringify(data, null, null))
-
 
         fetch("http://localhost:8080/booking/add", {
                 method: "post",
@@ -66,7 +61,13 @@ export default function BookingFormV2({userID, userName}) {
     return (
         /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
         <form onSubmit={handleSubmit(onSubmit)} className="booking">
-            <label>Name</label>
+            <br/>
+            <label>Customer-ID</label>
+            {show && <input value={userID}
+                className="block w-full bg-transparent outline-none border-b-2 py-2 px-4  placeholder-white-500 focus:bg-white-600" {...register("cusID", {
+                required: true
+            })} />}
+            <label>För- och efternamn</label>
             <input
                 className="block w-full bg-transparent outline-none border-b-2 py-2 px-4  placeholder-white-500 focus:bg-white-600" {...register("name", {
                 required: true,

@@ -27,7 +27,7 @@ public class JwtController {
 
             //System.out.println(tokenDetails.getUserName() + "ID: "+ tokenDetails.getUserID());
 
-            MyPageDetails tokenDetails = new MyPageDetails(user.getName(), user.getId().toString());
+            MyPageDetails tokenDetails = new MyPageDetails(user.getName(), user.getId().toString(), user.getUserType());
             //String[] returnUser = {user.getName(), user.getUserId().toString()};
 
             System.out.println(user.getName() + "ID: "+ user.getId());
@@ -43,11 +43,12 @@ public class JwtController {
     public static class MyPageDetails {
          String userName;
          String userID;
+         String userType;
 
-
-        public MyPageDetails(String userName, String userID) {
+        public MyPageDetails(String userName, String userID, String userType) {
             this.userName = userName;
             this.userID = userID;
+            this.userType = userType;
         }
 
         public String getUserName() {
@@ -57,6 +58,8 @@ public class JwtController {
         public String getUserID() {
             return userID;
         }
+
+        public String getUserType() { return userType; }
     }
 
 

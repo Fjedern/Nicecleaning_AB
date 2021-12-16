@@ -1,3 +1,4 @@
+
 package com.example.cleanNiceAB.Services;
 
 import com.example.cleanNiceAB.entities.User;
@@ -25,15 +26,11 @@ public class UserService {
         return userRepo.save(user);
     }
 
-    public User findUserByUserId(Long id) {
-        return userRepo.getById(id);
-    }
-
     public void deleteUser(Long id){
-        userRepo.deleteUserByUserId(id);
+        userRepo.deleteUserById(id);
     }
 
     public List<User> getAll() {
-       return userRepo.findAll();
+        return userRepo.findAll();
     }
 }

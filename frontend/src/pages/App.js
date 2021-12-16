@@ -16,6 +16,7 @@ import {
   Route,
 } from "react-router-dom";
 import PrivateRoute from "../components/PrivateRoute";
+import AdminPage from "./AdminPage";
 
 const App = () => {
 
@@ -27,6 +28,7 @@ const App = () => {
                 <Routes>
                     <Route exact path="/" element={<PrivateRoute/>}>
                         <Route path="/" element={<UserPage />} />
+                        <Route path="/" element={<AdminPage />} />
                     </Route>
 
 

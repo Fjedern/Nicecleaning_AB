@@ -1,4 +1,4 @@
-package com.example.cleanNiceAB;
+package com.example.cleanNiceAB.controllers;
 
 import com.example.cleanNiceAB.Services.JwtService;
 import com.example.cleanNiceAB.entities.User;
@@ -27,7 +27,7 @@ public class JwtController {
 
             //System.out.println(tokenDetails.getUserName() + "ID: "+ tokenDetails.getUserID());
 
-            MyPageDetails tokenDetails = new MyPageDetails(user.getName(), user.getId().toString(), user.getAddress());
+            MyPageDetails tokenDetails = new MyPageDetails(user.getName(), user.getId().toString(), user.getUserType());
             //String[] returnUser = {user.getName(), user.getUserId().toString()};
 
             System.out.println(user.getName() + "ID: "+ user.getId());
@@ -41,15 +41,14 @@ public class JwtController {
     //DTO
     @Value
     public static class MyPageDetails {
-         String userName;
-         String userID;
-         String userAddress;
+        String userName;
+        String userID;
+        String userType;
 
-
-        public MyPageDetails(String userName, String userID, String userAddress) {
+        public MyPageDetails(String userName, String userID, String userType) {
             this.userName = userName;
             this.userID = userID;
-            this.userAddress = userAddress;
+            this.userType = userType;
         }
 
         public String getUserName() {
@@ -60,9 +59,7 @@ public class JwtController {
             return userID;
         }
 
-        public String getUserAddress() {
-            return userAddress;
-        }
+        public String getUserType() { return userType; }
     }
 
 

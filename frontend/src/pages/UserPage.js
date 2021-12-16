@@ -3,7 +3,6 @@ import BookingFormV2 from "../components/BookingFormV2";
 import {useCookies, withCookies, Cookies} from 'react-cookie';
 import {Navigate, useNavigate} from 'react-router';
 import React, {useEffect, useState} from "react";
-import UserInfo from "../components/UserInfo";
 
 const UserPage = () => {
     let navigate = useNavigate();
@@ -20,6 +19,7 @@ const UserPage = () => {
             navigate("/login")
         } else {
             loadData();
+            console.log("")
         }
 
     }, []);
@@ -44,7 +44,6 @@ const UserPage = () => {
 
     return (
         <div className="container mx-auto">
-            <UserInfo props={loggedUser}></UserInfo>
             <h1 className="text-lg text-blue-900">Välkommen {loggedUser.userName}</h1>
             <BookingFormV2 userID={loggedUser.userID} userName={loggedUser.userName}/>
 

@@ -7,13 +7,11 @@ import React, {useEffect, useState} from "react";
 const UserPage = () => {
     let navigate = useNavigate();
     const [cookies, setCookie] = useCookies(['jwt'])
+    const [loggedUser, setLoggedUser] = useState({
 
-    const [nameOfUser, setNameOfUser] = useState(
-        {
             userName: "",
-            userID: ""
-        }
-    );
+            userID: 0
+    });
 
     useEffect(() => {
         console.log(cookies);
@@ -38,14 +36,16 @@ const UserPage = () => {
             })
                 .then(response =>
                     response.json())
-                .then(data => setNameOfUser(data))
-                .then(console.log("NAME OF USER: " + nameOfUser))
-    };
+                    .then(data => setLoggedUser(data))
+
+
+        };
 
     return (
         <div className="container mx-auto">
-            <h1>Namn: {nameOfUser.userName} </h1>
-            <BookingFormV2 userID={nameOfUser.userID} userName={nameOfUser.userName}/>
+            <h1 className="text-lg text-blue-900">Välkommen {loggedUser.userName}</h1>
+            <BookingFormV2 userID={loggedUser.userID} userName={loggedUser.userName}/>
+
         </div>
     );
 }

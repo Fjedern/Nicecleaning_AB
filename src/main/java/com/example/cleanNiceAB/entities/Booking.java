@@ -1,5 +1,6 @@
 package com.example.cleanNiceAB.entities;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,5 +32,9 @@ public class Booking implements Serializable {
     private Date date;
     @Column(name = "user_id")
     private String cusID;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE) //removed
+    @JoinColumn(name = "FK_customerId", referencedColumnName = "id")
+    private User user;
 
 }

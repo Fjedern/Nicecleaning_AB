@@ -3,6 +3,8 @@ import BookingFormV2 from "../components/BookingFormV2";
 import {useCookies, withCookies, Cookies} from 'react-cookie';
 import {Navigate, useNavigate} from 'react-router';
 import React, {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
+
 
 const UserPage = () => {
     let navigate = useNavigate();
@@ -11,6 +13,7 @@ const UserPage = () => {
 
             userName: "",
             userID: 0
+
     });
 
     useEffect(() => {
@@ -41,10 +44,17 @@ const UserPage = () => {
 
         };
 
+
     return (
         <div className="container mx-auto">
-            <h1 className="text-lg text-blue-900">Välkommen {loggedUser.userName}</h1>
+            <h1 className="mb-12 text-lg text-blue-900">Välkommen {loggedUser.userName}</h1>
+                <Link to={{pathname:"/allbookings/"+loggedUser.userID}}>
+                    <button className="mb-10 bg-gray-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        type="button" onClick={console.log(loggedUser.userID)}>Se mina bokade städningar</button>
+                </Link>
+
             <BookingFormV2 userID={loggedUser.userID} userName={loggedUser.userName}/>
+
 
         </div>
     );

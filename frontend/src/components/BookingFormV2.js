@@ -60,8 +60,10 @@ export default function BookingFormV2({userID, userName}) {
     //onClick={() => setValue("user", userID)}
     return (
         /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-        <form onSubmit={handleSubmit(onSubmit)} className="booking">
 
+
+        <form onSubmit={handleSubmit(onSubmit)} className="booking">
+            <h2>Boka en ny städning</h2>
 
             <label>För- och efternamn</label>
             <input

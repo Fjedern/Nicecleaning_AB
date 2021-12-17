@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import {useLocation, useParams} from 'react-router-dom';
 
 const AllBookings =()=>{
 
 const [bookings, setBookings] = useState([]);
 const [hasError, setHasError] = useState(false);
+const location = useLocation();
+const userID = useParams();
+
 
     useEffect(() => {
         loadData();
@@ -13,11 +17,12 @@ const [hasError, setHasError] = useState(false);
     useEffect(() => {
         }, [bookings]);
 
+
+
+/*
     const loadData = async () => {
 
-        const response = await fetch ("http://localhost:8080/booking/viewAll", {
-
-        })
+        const response = await fetch ("http://localhost:8080/booking/viewAll")
 
             .then(response => response.json())
             .then(data => setBookings(data))
@@ -25,7 +30,22 @@ const [hasError, setHasError] = useState(false);
 
             //TODO sessions check
 
-    };
+    };*/
+
+
+     const loadData = async () => {
+            console.log(userID);
+            const response = await fetch ("http://localhost:8080/booking/viewAll/"+userID.id, {
+
+            })
+
+                .then(response => response.json())
+                .then(data => setBookings(data))
+                .catch(error => setHasError(true))
+
+                //TODO sessions check
+
+        };
 
     const deleteBooking = (entry) =>{
         if(dateCheck(entry.date)){

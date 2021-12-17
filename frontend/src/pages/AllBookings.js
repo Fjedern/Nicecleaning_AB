@@ -35,10 +35,7 @@ const userID = useParams();
 
      const loadData = async () => {
             console.log(userID);
-            const response = await fetch ("http://localhost:8080/booking/viewAll/"+userID.id, {
-
-            })
-
+            const response = await fetch ("http://localhost:8080/booking/viewAllBookings/"+userID.id)
                 .then(response => response.json())
                 .then(data => setBookings(data))
                 .catch(error => setHasError(true))

@@ -1,6 +1,8 @@
 package com.example.cleanNiceAB;
 
+import com.example.cleanNiceAB.Services.BookingService;
 import com.example.cleanNiceAB.Services.JwtService;
+import com.example.cleanNiceAB.entities.Booking;
 import com.example.cleanNiceAB.entities.User;
 import com.example.cleanNiceAB.exeptions.NoSuchUserNameOrPasswordException;
 import com.mysql.cj.log.Log;
@@ -8,13 +10,18 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Date;
+
 @SpringBootTest
 class CleanNiceAbApplicationTests {
 	@Autowired
 	LoginController loginController;
+	BookingController bookingController;
 
 	@Autowired
 	JwtService jwtService;
+	BookingService bookingService;
+
 	@Test
 	void contextLoads() {
 	}
@@ -24,6 +31,12 @@ class CleanNiceAbApplicationTests {
 		User user = jwtService.getJwtOwner("eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxMyIsImlhdCI6MTYzOTE0MDk0NCwiaXNzIjoiU3TDpGRhRmludCBBQiIsInN1YiI6InVzZXIgaW5mbyIsImV4cCI6MTYzOTE1MTc0NH0.2gAIYrbM1ocLpMR8OsJtdlw6LTzeJtyGxxwKIvHLPPQ");
 		System.out.println(user.getUserType());
 		System.out.println(user.getEmail());
+	}
+
+	@Test
+	void test_viewAllBookings_byId_success (){
+		//Booking booking = "test", "testadress", "sandra", new Date());
+		//Booking newBooking = bookingService.addBooking(booking);
 	}
 
 }

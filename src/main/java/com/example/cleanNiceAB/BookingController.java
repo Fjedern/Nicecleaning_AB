@@ -30,7 +30,7 @@ public class BookingController {
 
     @PostMapping("/add")
     public ResponseEntity<Booking> addBooking(@RequestBody Booking booking){
-
+        System.out.println("i booking add");
         Booking newBooking = bookingService.addBooking(booking);
 
         return new ResponseEntity<>(newBooking, HttpStatus.CREATED); //newBooking = should be DTO
@@ -46,8 +46,9 @@ public class BookingController {
         return  bookingService.findAllBookingsByCustomerName(name);
     }
 
-    @GetMapping("/viewAll/{id}")
-    public Optional<Booking> getAllBookingsByCustomerId(@PathVariable("id") Long id){
+    @GetMapping("/viewAllBookings/{id}")
+    public List<Booking> getAllBookingsByCustomerId(@PathVariable("id") Long id){
+        System.out.println("inne");
         return  bookingService.findAllBookingsByCustomerId(id);
     }
 

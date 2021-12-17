@@ -47,7 +47,6 @@ public class BookingController {
 
     @GetMapping("/viewAllBookings/{id}")
     public List<Booking> getAllBookingsByCustomerId (@PathVariable("id") Long id){
-        System.out.println("inne i getAllBookings: "+ id);
         return  bookingService.findAllByUserId(id);
     }
 

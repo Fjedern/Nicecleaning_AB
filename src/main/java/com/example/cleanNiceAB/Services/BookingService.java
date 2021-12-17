@@ -35,10 +35,6 @@ public class BookingService {
         return bookingRepo.findByName(name);
     }
 
-    /*public List<Booking> findAllBookingsByCustomerId(Long id){
-        return bookingRepo.findAllById(id);
-    }*/
-
     public List<Booking> findAllByUserId(Long id){
         return bookingRepo.findAllByUserId(id);
     }

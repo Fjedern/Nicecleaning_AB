@@ -34,7 +34,7 @@ public class Booking implements Serializable {
     @Column(name = "date")
     private Date date;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE) //needs to be Eager when fetching bookings by user id
     @JoinColumn(name = "FK_customerId", referencedColumnName = "id")
     private User user;
 

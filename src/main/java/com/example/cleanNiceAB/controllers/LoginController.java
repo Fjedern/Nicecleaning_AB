@@ -1,5 +1,6 @@
-package com.example.cleanNiceAB;
+package com.example.cleanNiceAB.controllers;
 
+import com.example.cleanNiceAB.JwtResponse;
 import com.example.cleanNiceAB.Services.UserService;
 import com.example.cleanNiceAB.entities.User;
 import com.example.cleanNiceAB.utils.JwtUtils;

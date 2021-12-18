@@ -1,14 +1,12 @@
-import React, {useEffect, useState} from "react";
-import { useCookies, withCookies, Cookies } from 'react-cookie';
+import React, {useState} from "react";
 import Select from "react-select";
 import ReactDatePicker from "react-datepicker";
-import {useForm, Controller, useWatch} from "react-hook-form";
+import {useForm, Controller} from "react-hook-form";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
 
 export default function BookingFormV2({userID, userName}) {
     const [startDate, setStartDate] = useState(new Date());
-    //const [cookies, setCookie] = useCookies(['jwt'])
     const [show, setShow] = React.useState(true);
 
     const {register, control, handleSubmit, setValue} = useForm({
@@ -57,10 +55,9 @@ export default function BookingFormV2({userID, userName}) {
         )
     };
 
-    //onClick={() => setValue("user", userID)}
+
     return (
         /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-
 
         <form onSubmit={handleSubmit(onSubmit)} className="booking">
             <h2>Boka en ny städning</h2>

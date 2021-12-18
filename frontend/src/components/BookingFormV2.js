@@ -59,29 +59,30 @@ export default function BookingFormV2({userID, userName}) {
     return (
         /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
 
-        <form onSubmit={handleSubmit(onSubmit)} className="booking">
-            <h2>Boka en ny städning</h2>
+        <form onSubmit={handleSubmit(onSubmit)} className="booking bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <h2 className="text-center text-lg text-gray-500 text-xl font-bold">Boka en ny städning</h2>
 
-            <label>För- och efternamn</label>
+            <label className="text-gray-500 font-bold">För- och Efternamn</label>
             <input
                 className="block w-full bg-transparent outline-none border-b-2 py-2 px-4  placeholder-white-500 focus:bg-white-600" {...register("name", {
                 required: true,
                 maxLength: {value: 20, message: "name is too long"}
             })} />
-            <label>Adress</label>
+            <label className="text-gray-500 font-bold">Adress</label>
             <input
                 className="block w-full bg-transparent outline-none border-b-2 py-2 px-4  placeholder-white-500 focus:bg-white-600"
                 required {...register("address", {required: true})} />
-            <label>Type</label>
+            <label className="text-gray-500 font-bold">Val av städtjänst</label>
 
-            <select {...register("cleaningPackage")}
+            <select className="text-gray-500 font-bold" {...register("cleaningPackage")}
                     className="block w-full bg-transparent outline-none border-b-2 py-2 px-4  placeholder-white-500 focus:bg-white-600 text-black"
                     required>
-                <option value="basic cleaning">Basic Cleaning</option>
-                <option value="top cleaning">Top Cleaning</option>
-                <option value="diamond cleaning">Diamond Cleaning</option>
-                <option value="window cleaning">Window Cleaning</option>
+                <option value="basic cleaning">Bas</option>
+                <option value="top cleaning">Top</option>
+                <option value="diamond cleaning">Diamond</option>
+                <option value="window cleaning">Fönster</option>
             </select>
+            <label className="text-gray-500 font-bold">Datum och Tid</label>
             <Controller
                 control={control}
                 name="date"
@@ -96,7 +97,7 @@ export default function BookingFormV2({userID, userName}) {
                     />
                 }
             />
-            <input className="inline-block bg-white-500 text-black rounded shadow py-2 px-5 text-s" type="submit" onClick={() => setValue("user", {id: userID})}/>
+            <input className="mt-4 bg-gray-700 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" onClick={() => setValue("user", {id: userID})}/>
         </form>
     );
 }

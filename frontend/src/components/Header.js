@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router';
 function Header (){
 
 let navigate = useNavigate();
-const [cookies, setCookie, removeCookie] = useCookies(['jwt'])
+const [cookies, setCookie, removeCookie] = useCookies(['jwt']) //can setCookie be deleted?
 
 const onLogout = ()=> {
  removeCookie('jwt');

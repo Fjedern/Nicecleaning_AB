@@ -17,8 +17,6 @@ public class JwtController {
     public MyPageDetails getUsernameToFrontend(@RequestBody String token) {
         token = token.replace("\"", "");
 
-        //System.out.println("Token: " + token);
-
         boolean isTokenValid = jwtService.jwtIsValid(token);
 
         if (isTokenValid) {

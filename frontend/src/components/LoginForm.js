@@ -98,7 +98,7 @@ const [cookies, setCookie] = useCookies(['jwt'])
 
 
                     <input
-                        className="bg-gray-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        className="bg-gray-700 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                         type="submit" value="Logga in"/>
                 </div>
             </form>

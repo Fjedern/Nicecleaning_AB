@@ -59,7 +59,7 @@ function RegisterNewCustomerForm() {
 
     return (
         <div className="w-full max-w-lg">
-            <h1 className="text-lg font-bold text-center text-gray-400">Ny Kund</h1>
+
             <form ref={formRef} onSubmit={onSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" required>
                 <div className="mb-4">
                     <div className="inline">

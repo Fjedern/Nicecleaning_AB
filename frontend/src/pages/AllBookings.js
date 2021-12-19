@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import {useLocation, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 
 const AllBookings =()=>{
 
 const [bookings, setBookings] = useState([]);
 const [hasError, setHasError] = useState(false);
-const location = useLocation();
 const userID = useParams();
 
 
@@ -81,7 +80,7 @@ const userID = useParams();
 
 
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col mb-20">
             <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                     <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">

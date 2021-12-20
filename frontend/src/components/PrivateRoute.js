@@ -5,6 +5,7 @@ import {Navigate, Outlet} from 'react-router-dom';
 import MainPage from "../pages/MainPage";
 import UserPage from "../pages/UserPage";
 import AdminPage from "../pages/AdminPage";
+import StaffPage from "../pages/StaffPage";
 
 
 const PrivateRoute = () => {
@@ -40,7 +41,9 @@ const PrivateRoute = () => {
         if (loggedUser.userType === "customer") {
             return <UserPage/>;
         } else if (loggedUser.userType === "admin") {
-            return <AdminPage />
+            return <AdminPage/>
+        } else if (loggedUser.userType === "staff") {
+            return <StaffPage/>
 
         } else {
             /*

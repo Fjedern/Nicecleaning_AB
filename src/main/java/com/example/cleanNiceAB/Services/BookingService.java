@@ -1,7 +1,6 @@
 package com.example.cleanNiceAB.Services;
 
 import com.example.cleanNiceAB.email.EmailSender;
-import com.example.cleanNiceAB.email.EmailService;
 import com.example.cleanNiceAB.entities.Booking;
 import com.example.cleanNiceAB.repos.BookingRepo;
 
@@ -17,14 +16,11 @@ public class BookingService {
     private BookingRepo bookingRepo;
 
     @Autowired
-    private EmailService emailService;
-    public BookingService(BookingRepo bookingRepo, EmailService emailService) {
+    public BookingService(BookingRepo bookingRepo) {
         this.bookingRepo = bookingRepo;
-        this.emailService = emailService;
     }
 
     public Booking addBooking(Booking booking){
-        emailService.send("jonas_holmkvist@hotmail.se", "jonas_holmkvist@hotmail.se");
         return bookingRepo.save(booking);
     }
 

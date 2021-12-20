@@ -49,7 +49,7 @@ const AdminPage = () => {
 
             <button
                 className="text-center text-indigo-400 font-bold rounded py-2 w-2/12 focus:outline-none bg-gray-900 border-2 border-indigo-400">Lägg
-                till user
+                till användare
             </button>
             <Link to={{pathname:"/allbookings/"+userType}}>
                 <button className="text-center text-indigo-400 font-bold rounded py-2 w-2/12 focus:outline-none bg-gray-900 border-2 border-indigo-400"

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import {useParams} from 'react-router-dom';
+import {useNavigate} from 'react-router';
 
 const AllBookings =()=>{
 
 const [bookings, setBookings] = useState([]);
 const [hasError, setHasError] = useState(false);
 const userID = useParams();
+    let navigate = useNavigate();
 
 
     useEffect(() => {
@@ -85,6 +87,9 @@ const userID = useParams();
 
     return (
         <div className="flex flex-col mb-20">
+            <button onClick={() => navigate('/')}
+                className="text-center text-indigo-400 font-bold rounded py-2 w-2/12 focus:outline-none bg-gray-900 border-2 border-indigo-400">Tillbaka
+            </button>
             <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                     <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">

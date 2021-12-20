@@ -1,6 +1,7 @@
 package com.example.cleanNiceAB.Services;
 
 import com.example.cleanNiceAB.email.EmailSender;
+import com.example.cleanNiceAB.email.EmailService;
 import com.example.cleanNiceAB.entities.Booking;
 import com.example.cleanNiceAB.repos.BookingRepo;
 
@@ -11,19 +12,19 @@ import java.util.List;
 
 @Service
 public class BookingService {
-    private final EmailSender emailSender;
 
     @Autowired
     private BookingRepo bookingRepo;
 
-    public BookingService(EmailSender emailSender, BookingRepo bookingRepo) {
-        this.emailSender = emailSender;
+    @Autowired
+    private EmailService emailService;
+    public BookingService(BookingRepo bookingRepo, EmailService emailService) {
         this.bookingRepo = bookingRepo;
+        this.emailService = emailService;
     }
 
     public Booking addBooking(Booking booking){
-
-        emailSender.send("jonas_holmkvist@hotmail.se", "jonas_holmkvist@hotmail.se");
+        emailService.send("jonas_holmkvist@hotmail.se", "jonas_holmkvist@hotmail.se");
         return bookingRepo.save(booking);
     }
 

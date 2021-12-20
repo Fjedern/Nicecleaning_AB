@@ -1,5 +1,6 @@
 package com.example.cleanNiceAB.Services;
 
+import com.example.cleanNiceAB.entities.Employee;
 import com.example.cleanNiceAB.entities.User;
 import com.example.cleanNiceAB.utils.JwtUtils;
 import io.jsonwebtoken.Claims;
@@ -12,6 +13,8 @@ import java.util.List;
 @Service
 public class JwtService {
 
+    @Autowired
+    EmployeeService employeeService;
     @Autowired
     UserService userService;
 
@@ -30,14 +33,33 @@ public class JwtService {
 
     public User getJwtOwner(String jwt){
         Claims claims = JwtUtils.decodeJWT(jwt);
-        List<User> userList = userService.getAll();
 
-        User foundUser;
+            List<User> userList = userService.getAll();
 
-        for(User user : userList){
-            if (user.getId().equals(Long.valueOf(claims.getId()))){
-                foundUser = user;
-                return foundUser;
+            User foundUser;
+
+            for (User user : userList) {
+                if (user.getId().equals(Long.valueOf(claims.getId()))) {
+                    foundUser = user;
+                    return foundUser;
+                }
+            }
+
+
+        return null;
+    }
+
+    public Employee getEmployeeByJwt(String jwt){
+        Claims claims = JwtUtils.decodeJWT(jwt);
+
+        List<Employee> employeeList = employeeService.findAllEmployees();
+
+        Employee foundEmployee;
+
+        for (Employee employee : employeeList){
+            if (employee.getId().equals(Long.valueOf(claims.getId()))){
+                foundEmployee = employee;
+                return foundEmployee;
             }
         }
         return null;

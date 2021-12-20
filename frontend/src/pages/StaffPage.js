@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useCookies, withCookies, Cookies } from 'react-cookie';
 
 
 const StaffPage = () =>{
 
 const [bookings, setBookings] = useState([]);
 const [hasError, setHasError] = useState(false);
+const [cookies, setCookie] = useCookies(['jwt']) //can setCookie be deleted?
 
  useEffect(() => {
         loadData();
@@ -14,7 +16,9 @@ const [hasError, setHasError] = useState(false);
         }, [bookings]);
 
     const loadData = async () => {
-        const response = await fetch ("http://localhost:8080/booking/viewAll", {
+        const response = await fetch ("http://localhost:8080/employee/viewBookings", {
+        method: "get",
+            headers: {'token': JSON.stringify(cookies.jwt.token)},
         })
             .then(response => response.json())
             .then(data => setBookings(data))

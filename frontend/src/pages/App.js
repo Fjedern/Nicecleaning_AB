@@ -17,6 +17,7 @@ import {
 } from "react-router-dom";
 import PrivateRoute from "../components/PrivateRoute";
 import AdminPage from "./AdminPage";
+import StaffPage from "./StaffPage";
 
 const App = () => {
 
@@ -29,6 +30,7 @@ const App = () => {
                     <Route exact path="/" element={<PrivateRoute/>}>
                         <Route path="/" element={<UserPage />} />
                         <Route path="/" element={<AdminPage />} />
+                        <Route path="/" element={<StaffPage />} />
                     </Route>
 
 

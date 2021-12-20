@@ -44,11 +44,13 @@ const PrivateRoute = () => {
             return <AdminPage/>
         } else if (loggedUser.userType === "staff") {
             return <StaffPage/>
+
         } else {
             /*
                         May be error page instead
             */
             return <UserPage/>
+
         }
     } else {
         return <Navigate to="/login"/>

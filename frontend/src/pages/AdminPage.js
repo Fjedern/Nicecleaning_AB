@@ -4,15 +4,17 @@ import {useCookies, withCookies, Cookies} from 'react-cookie';
 import {Navigate, useNavigate} from 'react-router';
 import React, {useEffect, useState} from "react";
 import AllBookings from "./AllBookings";
+import {Link} from "react-router-dom";
 
 const AdminPage = () => {
 
     const [cookies, setCookie] = useCookies(['jwt'])
+    const userType = "admin";
 
     //console.log(cookies.jwt.token);
 
     const [nameOfUser, setNameOfUser] = useState("");
-    //console.log(nameOfUser);
+    console.log(userType);
 
     useEffect(() => {
         loadData();
@@ -36,6 +38,7 @@ const AdminPage = () => {
     };
 
     return (
+
         <div className="container mx-auto">
             <h1>Welcome! {nameOfUser.userName}</h1>
             <h1>ADMIN PAGE</h1>
@@ -48,9 +51,13 @@ const AdminPage = () => {
                 className="text-center text-indigo-400 font-bold rounded py-2 w-2/12 focus:outline-none bg-gray-900 border-2 border-indigo-400">Lägg
                 till user
             </button>
-            <h1>All bookings</h1>
-            <AllBookings/>
+            <Link to={{pathname:"/allbookings/"+userType}}>
+                <button className="text-center text-indigo-400 font-bold rounded py-2 w-2/12 focus:outline-none bg-gray-900 border-2 border-indigo-400"
+                   type="button" onClick={console.log(userType)}>Se alla bokningar</button>
+            </Link>
+
         </div>
+
     );
 }
 

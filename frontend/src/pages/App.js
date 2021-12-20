@@ -18,6 +18,7 @@ import {
 } from "react-router-dom";
 import PrivateRoute from "../components/PrivateRoute";
 import AdminPage from "./AdminPage";
+import StaffPage from "./StaffPage";
 
 const App = () => {
 

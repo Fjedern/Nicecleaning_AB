@@ -1,15 +1,14 @@
 package com.example.cleanNiceAB.controllers;
 
 import com.example.cleanNiceAB.JwtResponse;
+import com.example.cleanNiceAB.Services.EmployeeService;
 import com.example.cleanNiceAB.Services.UserService;
+import com.example.cleanNiceAB.entities.Employee;
 import com.example.cleanNiceAB.entities.User;
 import com.example.cleanNiceAB.utils.JwtUtils;
 import com.example.cleanNiceAB.utils.SecureUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,29 +20,41 @@ public class LoginController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    EmployeeService employeeService;
+
     @PostMapping("/validation")
+    public JwtResponse loginValidator(@RequestHeader String userType, @RequestBody UserDetails userDetails){
 
-    public JwtResponse loginValidator(@RequestBody UserDetails userDetails){
-        List<User> userList = userService.getAll();
-
-        /*String split[] = loginFormData.split("\"");
-        String loginEmail = split[3];
-        String loginPassword = split[7];*/
-
-       /* System.out.println("JASON EMAIL: " + loginEmail);
-        System.out.println("JASON PASSWORD: " + loginPassword);
-        System.out.println("JASON STRING: " + loginFormData);*/
-
-        for (User user: userList){
-            if (userDetails.getEmail().equals(user.getEmail())) {
-                userDetails.setPassword(SecureUtils.getSecurePassword(userDetails.password, user.getSalt()));
-                if (user.getPassword().equals(userDetails.getPassword())) {
-                    System.out.println("SUCCESS TWO");
-                    final String token = JwtUtils.createJWT(user);
-                    return new JwtResponse(token);
+        if (userType.equals("user")){
+            List<User> userList = userService.getAll();
+            for (User user: userList){
+                if (userDetails.getEmail().equals(user.getEmail())) {
+                    userDetails.setPassword(SecureUtils.getSecurePassword(userDetails.password, user.getSalt()));
+                    if (user.getPassword().equals(userDetails.getPassword())) {
+                        System.out.println("SUCCESS TWO");
+                        final String token = JwtUtils.createJWT(user);
+                        return new JwtResponse(token);
+                    }
                 }
             }
         }
+
+        if (userType.equals("employee")){
+            List<Employee> employeeList = employeeService.findAllEmployees();
+
+            for (Employee employee : employeeList){
+                if (userDetails.getEmail().equals(employee.getEmail())){
+                    userDetails.setPassword(SecureUtils.getSecurePassword(userDetails.password, employee.getSalt()));
+                    if (employee.getPassword().equals(userDetails.getPassword())){
+                        System.out.println("SUCCESS TWO");
+                        final String token = JwtUtils.createEmployeeJWT(employee);
+                        return new JwtResponse(token);
+                    }
+                }
+            }
+        }
+
 
         return null;
 

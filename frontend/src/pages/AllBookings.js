@@ -9,7 +9,12 @@ const userID = useParams();
 
 
     useEffect(() => {
-        loadData();
+
+        if(userID.id === "admin"){
+          loadDataAll();
+        }else{
+            loadData();
+        }
 
     }, []);
 
@@ -17,10 +22,8 @@ const userID = useParams();
         }, [bookings]);
 
 
-
-/*
-    const loadData = async () => {
-
+    const loadDataAll = async () => {
+        console.log("inne i all data load");
         const response = await fetch ("http://localhost:8080/booking/viewAll")
 
             .then(response => response.json())
@@ -29,11 +32,12 @@ const userID = useParams();
 
             //TODO sessions check
 
-    };*/
+    };
 
 
      const loadData = async () => {
             console.log(userID);
+
             const response = await fetch ("http://localhost:8080/booking/viewAllBookings/"+userID.id)
                 .then(response => response.json())
                 .then(data => setBookings(data))

@@ -40,12 +40,14 @@ const PrivateRoute = () => {
         if (loggedUser.userType === "customer") {
             return <UserPage/>;
         } else if (loggedUser.userType === "admin") {
-            return <AdminPage/>
+            return <AdminPage />
+
         } else {
             /*
                         May be error page instead
             */
             return <UserPage/>
+
         }
     } else {
         return <Navigate to="/login"/>

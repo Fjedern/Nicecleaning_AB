@@ -5,6 +5,8 @@ import {Navigate, useNavigate} from 'react-router';
 import React, {useEffect, useState} from "react";
 import AllBookings from "./AllBookings";
 import {Link} from "react-router-dom";
+import RegisterNewCustomerForm from "../components/RegisterNewCustomerForm";
+import RegisterAsAdminModal from "../components/RegisterAsAdminModal";
 
 const AdminPage = () => {
 
@@ -35,29 +37,23 @@ const AdminPage = () => {
     };
 
     return (
-
-        <div className="container mx-auto">
-            <h1>Welcome! {nameOfUser.userName}</h1>
-            <h1>ADMIN PAGE</h1>
-            <button
-                className="text-center text-indigo-400 font-bold rounded py-2 w-2/12 focus:outline-none bg-gray-900 border-2 border-indigo-400">Skapa
-                bokning
-            </button>
-
-            <button
-                className="text-center text-indigo-400 font-bold rounded py-2 w-2/12 focus:outline-none bg-gray-900 border-2 border-indigo-400">Lägg
-                till user
-            </button>
-            <Link to="/tilldela">
-                            <button className="text-center text-indigo-400 font-bold rounded py-2 w-2/12 focus:outline-none bg-gray-900 border-2 border-indigo-400"
-                               type="button">Tilldela städare</button>
-                        </Link>
-            <Link to={{pathname:"/allbookings/"+userType}}>
-                <button className="text-center text-indigo-400 font-bold rounded py-2 w-2/12 focus:outline-none bg-gray-900 border-2 border-indigo-400"
-                   type="button" onClick={console.log(userType)}>Se alla bokningar</button>
-            </Link>
-
-        </div>
+        <section className="text-gray-600 body-font relative">
+            <div className="container px-5 py-24 mx-auto">
+                <h1>Welcome! {nameOfUser.userName}</h1>
+                <h1>ADMIN PAGE</h1>
+                <button
+                    className="bg-gray-400 text-center text-teal-200 font-bold rounded py-2 w-2/12 focus:outline-none border-2 border-gray-600">Skapa
+                    bokning
+                </button>
+                <RegisterAsAdminModal />
+                <Link to={{pathname: "/allbookings/" + userType}}>
+                    <button
+                        className="bg-gray-400 text-center text-teal-200 font-bold rounded py-2 w-2/12 focus:outline-none border-2 border-gray-600"
+                        type="button" onClick={console.log(userType)}>Se alla bokningar
+                    </button>
+                </Link>
+            </div>
+        </section>
 
     );
 }

@@ -7,6 +7,7 @@ import UserPage from './UserPage.js';
 import StaffPage from './StaffPage.js';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import AssignEmployee from "./AssignEmployee.js";
 import About from "./About";
 import { CookiesProvider } from 'react-cookie';
 
@@ -32,14 +33,13 @@ const App = () => {
                         <Route path="/" element={<AdminPage />} />
 
                     </Route>
-
-
                     <Route exact path="/login" element={<MainPage />} />
-
-
                     <Route path="/allbookings/:id" element={<AllBookings />} />
+                    <Route path="/tilldela" element={<AssignEmployee />} />
                     <Route path="/register" element={<Register />} />
+
                     <Route path="/StaffPage" element={<StaffPage />} />
+
 
 
                     <Route path="/omoss" element={<About />} />

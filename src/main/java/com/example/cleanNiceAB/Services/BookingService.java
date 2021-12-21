@@ -40,6 +40,6 @@ public class BookingService {
         return bookingRepo.save(booking);
     }
 
-    public void deleteBooking(Long id){bookingRepo.deleteBookingById(id);
-    }
+    public void deleteBooking(Long id){bookingRepo.deleteBookingById(id);}
+
 }

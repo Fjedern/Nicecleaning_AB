@@ -10,11 +10,8 @@ const AdminPage = () => {
 
     const [cookies, setCookie] = useCookies(['jwt'])
     const userType = "admin";
-
-    //console.log(cookies.jwt.token);
-
     const [nameOfUser, setNameOfUser] = useState("");
-    console.log(userType);
+    //console.log(userType);
 
     useEffect(() => {
         loadData();
@@ -51,6 +48,10 @@ const AdminPage = () => {
                 className="text-center text-indigo-400 font-bold rounded py-2 w-2/12 focus:outline-none bg-gray-900 border-2 border-indigo-400">Lägg
                 till user
             </button>
+            <Link to="/tilldela">
+                            <button className="text-center text-indigo-400 font-bold rounded py-2 w-2/12 focus:outline-none bg-gray-900 border-2 border-indigo-400"
+                               type="button">Tilldela städare</button>
+                        </Link>
             <Link to={{pathname:"/allbookings/"+userType}}>
                 <button className="text-center text-indigo-400 font-bold rounded py-2 w-2/12 focus:outline-none bg-gray-900 border-2 border-indigo-400"
                    type="button" onClick={console.log(userType)}>Se alla bokningar</button>

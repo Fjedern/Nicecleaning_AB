@@ -55,7 +55,6 @@ const AdminPage = () => {
                         type="button" onClick={console.log(userType)}>Se alla bokningar
                     </button>
                 </Link>
-
             </div>
         </section>
 

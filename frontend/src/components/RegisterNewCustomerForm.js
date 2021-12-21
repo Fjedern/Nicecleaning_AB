@@ -110,6 +110,15 @@ function RegisterNewCustomerForm() {
                        type="text" name="password" value={formData.password}
                        onChange={(e) => setFormData({...formData, password: e.target.value})} required/>
                    </label>
+                    <label className="flex items-center">
+                        <input type="checkbox" className="form-checkbox" required/>
+                            <span className="ml-2 block uppercase tracking-wide text-xs font-bold mb-2 text-gray-600">
+                                <h1 className="text-lg text-gray-700">How do we store your data?</h1>
+                                    Our Company securely stores your data at sweden.
+
+                                    Our Company will keep your information for one year after subscription ends. Once this time period has expired, we will delete your data.
+                            </span>
+                    </label>
                     <input className="bg-gray-700 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="submit" value="Registrera"/>
                 </div>

@@ -1,6 +1,7 @@
 import React, {useRef, useState} from "react";
 import Swal from "sweetalert2";
 import { useNavigate } from 'react-router';
+import UserTypeDropdown from "./RegisterAsAdminModal";
 
 function RegisterNewCustomerForm() {
     const formRef = useRef();
@@ -55,7 +56,6 @@ function RegisterNewCustomerForm() {
                 console.log(error)
             })
     }
-
 
     return (
         <div className="w-full max-w-lg">

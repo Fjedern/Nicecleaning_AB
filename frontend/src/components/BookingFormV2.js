@@ -3,10 +3,14 @@ import Select from "react-select";
 import ReactDatePicker from "react-datepicker";
 import {useForm, Controller} from "react-hook-form";
 import "react-datepicker/dist/react-datepicker.css";
+import { addDays, setHours, setMinutes } from 'date-fns';
+import sv from "date-fns/locale/sv"; // the locale you want
+
 import Swal from "sweetalert2";
 
 export default function BookingFormV2({userID, userName}) {
     const [startDate, setStartDate] = useState(new Date());
+
     const [show, setShow] = React.useState(true);
 
     const {register, control, handleSubmit, setValue} = useForm({
@@ -15,6 +19,7 @@ export default function BookingFormV2({userID, userName}) {
 
         }
     });
+
 
 
     const bookingSuccess = function () {
@@ -90,9 +95,14 @@ export default function BookingFormV2({userID, userName}) {
                     <ReactDatePicker
                         className="input block w-full bg-transparent outline-none border-b-2 py-2 px-4  placeholder-black-500 focus:bg-black-600"
                         placeholderText="Select date"
-                        onChange={(date) => field.onChange(date)}
                         selected={field.value}
+                        startDate={startDate}
+                        minDate={addDays(new Date(), 3)}
+                        onChange={(date) => field.onChange(date)}
+                        locale={sv}
                         showTimeSelect
+                        minTime={setHours(setMinutes(new Date(), 0), 6)}
+                        maxTime={setHours(setMinutes(new Date(), 0), 18)}
                         timeClassName={handleColor}
                     />
                 }
@@ -101,3 +111,7 @@ export default function BookingFormV2({userID, userName}) {
         </form>
     );
 }
+
+/*onChange={(date) => field.onChange(date)}*/
+/*selected={field.value}*/
+//minDate={new Date()}

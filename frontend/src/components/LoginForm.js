@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useRef, uesEffect} from "react";
 import {useCookies, withCookies, Cookies} from 'react-cookie';
 import {useNavigate} from 'react-router';
 import Swal from "sweetalert2";
@@ -7,9 +7,12 @@ function LoginForm() {
 
     let navigate = useNavigate();
 
+    const [kindOfUser, setKindOfUser] = useState("user")
+
     const [formData, setFormData] = useState({
         email: "",
-        password: ""
+        password: "",
+        type: kindOfUser
     });
 
      let loginSuccess = function () {
@@ -43,7 +46,7 @@ const [cookies, setCookie] = useCookies(['jwt'])
 
     };
     //TODO add requirements/validation
-    const [userType, setUserType] = useState("");
+    const [userType, setUserType] = useState("user");
 
     const loadData = async () => {
         console.log("här");
@@ -72,12 +75,36 @@ const [cookies, setCookie] = useCookies(['jwt'])
     }
 
 
+    const [isChecked, setIsChecked] = useState(false);
+
+   React.useEffect(()=> {
+    if(kindOfUser==="user"){
+        setKindOfUser("employee")
+    }
+    if(kindOfUser==="employee"){
+            setKindOfUser("user")
+
+            }
+    }, [isChecked])
+  /*  const checked = ()=>{
+
+
+        if(kindOfUser==="user"){
+
+        console.log(kindOfUser)}
+
+    }*/
+
+
     return (
         <div className="w-full max-w-lg">
+        <label>
+
+            </label>
             <form onSubmit={onSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" required>
                 <div className="mb-4">
                     <div className="inline">
-
+                    <input  onClick={() => {setIsChecked(!isChecked)}} type="checkbox" checked={isChecked}  value={kindOfUser} onChange={(e) => setFormData({...formData, type: e.target.value})}/>
                     </div>
 
                     <label className="block uppercase tracking-wide text-xs font-bold mb-2 text-gray-600">

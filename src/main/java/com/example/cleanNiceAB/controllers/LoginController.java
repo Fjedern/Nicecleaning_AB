@@ -24,9 +24,9 @@ public class LoginController {
     EmployeeService employeeService;
 
     @PostMapping("/validation")
-    public JwtResponse loginValidator(@RequestHeader String userType, @RequestBody UserDetails userDetails){
-
-        if (userType.equals("user")){
+    public JwtResponse loginValidator(@RequestBody UserDetails userDetails){
+        System.out.println(userDetails.type);
+        if (userDetails.type.equals("user")){
             List<User> userList = userService.getAll();
             for (User user: userList){
                 if (userDetails.getEmail().equals(user.getEmail())) {
@@ -40,7 +40,7 @@ public class LoginController {
             }
         }
 
-        if (userType.equals("employee")){
+        if (userDetails.type.equals("employee")){
             List<Employee> employeeList = employeeService.findAllEmployees();
 
             for (Employee employee : employeeList){
@@ -63,13 +63,15 @@ public class LoginController {
     public static class UserDetails{
         private String email;
         private String password;
+        private String type;
 
         public UserDetails() {
         }
 
-        public UserDetails(String email, String password) {
+        public UserDetails(String email, String password, String type) {
             this.email = email;
             this.password = password;
+            this.type = type;
         }
 
         public String getEmail() {
@@ -86,6 +88,14 @@ public class LoginController {
 
         public void setPassword(String password) {
             this.password = password;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
         }
     }
 }

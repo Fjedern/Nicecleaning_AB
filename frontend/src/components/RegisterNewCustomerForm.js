@@ -6,6 +6,7 @@ import UserTypeDropdown from "./RegisterAsAdminModal";
 function RegisterNewCustomerForm() {
     const formRef = useRef();
     let navigate = useNavigate();
+    const [show, setShow] = useState(true);
 
     const [formData, setFormData] = useState({
         name: "",
@@ -57,6 +58,9 @@ function RegisterNewCustomerForm() {
             })
     }
 
+    function regTerms() {
+        setShow(false)
+    }
     return (
         <div className="w-full max-w-lg">
 
@@ -113,14 +117,45 @@ function RegisterNewCustomerForm() {
                     <label className="flex items-center">
                         <input type="checkbox" className="form-checkbox" required/>
                             <span className="ml-2 block uppercase tracking-wide text-xs font-bold mb-2 text-gray-600">
-                                <h1 className="text-lg text-gray-700">How do we store your data?</h1>
-                                    Our Company securely stores your data at sweden.
-
-                                    Our Company will keep your information for one year after subscription ends. Once this time period has expired, we will delete your data.
+                                <h1 className="text-m text-gray-700">Jag har läst och godkänt PERSONUPPGIFTSAVTALET </h1>
                             </span>
                     </label>
                     <input className="bg-gray-700 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="submit" value="Registrera"/>
+
+                    <button
+                        className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                        onClick={regTerms}>
+                        Läs avtal
+                    </button>
+                    {!show &&
+                        <div>
+                            <div className="p-4 ">
+
+                                {/*<h5 className=" mt-4 text-gray-900 text-xl font-medium mb-2">Välkommen till din sida, {userName}!</h5>*/}
+                                <div className="">
+                                    <div
+                                        className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
+
+                                        <div className="p-6 flex flex-col justify-start">
+
+                                            <h5 className="text-gray-900 text-xl font-medium mb-2">BEHANDLING AV PERSONUPPGIFTER OCH SPECIFIKATION</h5>
+
+                                            <p className="text-gray-700 text-base mb-4">
+                                                7.1 Personuppgiftsbiträdet ska vidta alla lämpliga tekniska och organisatoriska säkerhetsåtgärder som krävs enligt Dataskyddslagstiftningen för att förhindra Personuppgiftsincidenter, genom att säkerställa att Behandlingen uppfyller kraven i Dataskyddsförordningen och att den Registrerades rättigheter skyddas.<br/>
+
+                                                7.2 Personuppgiftsbiträdet ska fortlöpande säkerställa att den tekniska och organisatoriska säkerheten i samband med Behandlingen medför en lämplig nivå av konfidentialitet, integritet, tillgänglighet och motståndskraft.<br/>
+
+                                                7.3 Eventuella tillkommande eller ändrade krav på skyddsåtgärder från den Personuppgiftsansvarige, efter parternas tecknande av PUB-avtalet, ska betraktas som nya Instruktioner enligt PUB-avtalet.
+
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>}
+
+
                 </div>
             </form>
         </div>

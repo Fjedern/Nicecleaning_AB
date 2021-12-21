@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class BookingService {
+
 
     @Autowired
     private BookingRepo bookingRepo;
@@ -20,7 +20,6 @@ public class BookingService {
     }
 
     public Booking addBooking(Booking booking){
-
         return bookingRepo.save(booking);
     }
 

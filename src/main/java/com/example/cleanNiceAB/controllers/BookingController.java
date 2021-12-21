@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin("*")
 @RestController
@@ -32,6 +31,7 @@ public class BookingController {
     @PostMapping("/add")
     public ResponseEntity<Booking> addBooking(@RequestBody Booking booking){
         Booking newBooking = bookingService.addBooking(booking);
+
 
         return new ResponseEntity<>(newBooking, HttpStatus.CREATED); //newBooking = should be DTO
     }

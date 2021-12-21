@@ -9,6 +9,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import AssignEmployee from "./AssignEmployee.js";
 import About from "./About";
+import ErrorPage from "./ErrorPage.js";
 import { CookiesProvider } from 'react-cookie';
 
 
@@ -39,9 +40,7 @@ const App = () => {
                     <Route path="/register" element={<Register />} />
 
                     <Route path="/StaffPage" element={<StaffPage />} />
-
-
-
+                    <Route path="/Error" element={<ErrorPage />} />
                     <Route path="/omoss" element={<About />} />
                 </Routes>
                 <Footer/>

@@ -10,11 +10,8 @@ const AdminPage = () => {
 
     const [cookies, setCookie] = useCookies(['jwt'])
     const userType = "admin";
-
-    //console.log(cookies.jwt.token);
-
     const [nameOfUser, setNameOfUser] = useState("");
-    console.log(userType);
+    //console.log(userType);
 
     useEffect(() => {
         loadData();

@@ -105,6 +105,9 @@ const [cookies, setCookie] = useCookies(['jwt'])
                 <div className="mb-4">
                     <div className="inline">
                     <input  onClick={() => {setIsChecked(!isChecked)}} type="checkbox" checked={isChecked}  value={kindOfUser} onChange={(e) => setFormData({...formData, type: e.target.value})}/>
+                    <label class="form-check-label inline-block text-gray-800 text-xs" for="flexCheckDefault">
+                            Are you an employee?
+                          </label>
                     </div>
 
                     <label className="block uppercase tracking-wide text-xs font-bold mb-2 text-gray-600">

@@ -1,8 +1,11 @@
 package com.example.cleanNiceAB;
 
 import com.example.cleanNiceAB.Services.BookingService;
+import com.example.cleanNiceAB.Services.EmployeeService;
 import com.example.cleanNiceAB.Services.JwtService;
+import com.example.cleanNiceAB.controllers.EmployeeController;
 import com.example.cleanNiceAB.controllers.LoginController;
+import com.example.cleanNiceAB.entities.Employee;
 import com.example.cleanNiceAB.entities.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +17,12 @@ import java.util.Date;
 class CleanNiceAbApplicationTests {
 	@Autowired
 	LoginController loginController;
+	EmployeeController employeeController;
 
 
 	@Autowired
 	JwtService jwtService;
-	BookingService bookingService;
+	EmployeeService employeeService;
 
 	@Test
 	void contextLoads() {
@@ -32,9 +36,11 @@ class CleanNiceAbApplicationTests {
 	}
 
 	@Test
-	void test_viewAllBookings_byId_success (){
-		//Booking booking = "test", "testadress", "sandra", new Date());
-		//Booking newBooking = bookingService.addBooking(booking);
+	void test_update_Employee_with_booking_success (){
+		//employeeController.addEmployee(new Employee("test", "test", "test"));
+		//employeeController.addEmployeeToBooking()
+		//employeeService.addEmployee(new Employee("testmail", "test15", "städare1", "0988", "adrestest"));
+
 	}
 
 }

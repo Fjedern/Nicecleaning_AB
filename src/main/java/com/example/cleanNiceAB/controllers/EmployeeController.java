@@ -9,8 +9,10 @@ import io.jsonwebtoken.Claims;
 import lombok.AllArgsConstructor;
 import lombok.Value;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.NoSuchAlgorithmException;
@@ -54,6 +56,17 @@ public class EmployeeController {
         Optional<Employee> optionalEmployee = employeeService.findEmployeeById(Long.parseLong(claims.getId()));
         Employee employee = optionalEmployee.get();
         return employee.getBookings();
+    }
+
+    @Transactional
+    @Modifying
+    @PostMapping("/addEmployeeToBooking")
+    public ResponseEntity<?> addEmployeeToBooking(@RequestBody Employee employee, Booking booking){
+        System.out.println(employee.getName());
+        employee.setBookings((Set<Booking>) booking);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+
     }
 
     @Value

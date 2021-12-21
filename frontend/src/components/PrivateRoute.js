@@ -9,18 +9,25 @@ import StaffPage from "../pages/StaffPage";
 
 
 const PrivateRoute = () => {
+
     const [cookies, setCookie] = useCookies(['jwt'])
 
-    const checkTypeOfUser = async () => {
+    const [loggedUser, setLoggedUser] = useState({
+            userName: "",
+            userId: 0,
+            userType: ""
+        });
 
+    const checkTypeOfUser = async () => {
+        console.log(cookies);
         const response = await fetch("http://localhost:8080/auth/getUsername", {
             method: "post",
             headers: {
                 "Content-Type": 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify(cookies.jwt.token),
-        })
+                body: JSON.stringify(cookies.jwt.token),
+            })
             .then(response =>
                 response.json())
             .then(data => setLoggedUser(data))
@@ -28,14 +35,13 @@ const PrivateRoute = () => {
     };
 
     useEffect(() => {
+        if(!cookies.jwt){
+            return <Navigate to="/login"/>
+        }
         checkTypeOfUser();
     }, [])
 
-    const [loggedUser, setLoggedUser] = useState({
-        userName: "",
-        userId: 0,
-        userType: ""
-    });
+
 
     if (cookies != null) {
         if (loggedUser.userType === "customer") {
@@ -55,7 +61,6 @@ const PrivateRoute = () => {
     } else {
         return <Navigate to="/login"/>
     }
-
 
 }
 

@@ -1,6 +1,5 @@
 package com.example.cleanNiceAB.Services;
 
-import com.example.cleanNiceAB.email.EmailSender;
 import com.example.cleanNiceAB.entities.Booking;
 import com.example.cleanNiceAB.repos.BookingRepo;
 

@@ -12,10 +12,10 @@ import java.util.List;
 @Service
 public class BookingService {
 
+
     @Autowired
     private BookingRepo bookingRepo;
 
-    @Autowired
     public BookingService(BookingRepo bookingRepo) {
         this.bookingRepo = bookingRepo;
     }

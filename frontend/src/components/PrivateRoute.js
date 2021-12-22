@@ -11,7 +11,6 @@ import StaffPage from "../pages/StaffPage";
 const PrivateRoute = () => {
 
     const [cookies, setCookie] = useCookies(['jwt'])
-
     const [loggedUser, setLoggedUser] = useState({
             userName: "",
             userId: 0,

@@ -7,6 +7,7 @@ import com.example.cleanNiceAB.controllers.EmployeeController;
 import com.example.cleanNiceAB.controllers.LoginController;
 import com.example.cleanNiceAB.entities.Employee;
 import com.example.cleanNiceAB.entities.User;
+import com.example.cleanNiceAB.utils.SecureUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -38,8 +39,8 @@ class CleanNiceAbApplicationTests {
 	@Test
 	void test_update_Employee_with_booking_success (){
 		//employeeController.addEmployee(new Employee("test", "test", "test"));
-		//employeeController.addEmployeeToBooking()
-		//employeeService.addEmployee(new Employee("testmail", "test15", "städare1", "0988", "adrestest"));
+		//employeeController.addEmployeeToBooking
+		//Employee employee = employeeService.addEmployee("testmail", "test15", SecureUtils, "0988", "adrestest");
 
 	}
 

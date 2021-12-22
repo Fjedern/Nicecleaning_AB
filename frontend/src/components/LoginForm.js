@@ -1,4 +1,4 @@
-import React, {useState, useRef, uesEffect} from "react";
+import React, {useState, useEffect} from "react";
 import {useCookies, withCookies, Cookies} from 'react-cookie';
 import {useNavigate} from 'react-router';
 import Swal from "sweetalert2";
@@ -7,13 +7,24 @@ function LoginForm() {
 
     let navigate = useNavigate();
 
-    const [kindOfUser, setKindOfUser] = useState("user")
-
+    const [kindOfUser, setKindOfUser] = useState("user");
+    const [isChecked, setIsChecked] = useState(false);
+    const [cookies, setCookie] = useCookies(['jwt'])
     const [formData, setFormData] = useState({
         email: "",
         password: "",
         type: kindOfUser
     });
+
+    useEffect(()=> {
+        if(kindOfUser==="user"){
+            setKindOfUser("employee")
+        }
+        if(kindOfUser==="employee"){
+                setKindOfUser("user")
+
+                }
+        }, [isChecked])
 
      let loginSuccess = function () {
          if(cookies != null){
@@ -36,8 +47,6 @@ function LoginForm() {
              })
          }
      };
-
-const [cookies, setCookie] = useCookies(['jwt'])
 
     const onSubmit = (event) => {
         event.preventDefault();
@@ -75,27 +84,6 @@ const [cookies, setCookie] = useCookies(['jwt'])
     }
 
 
-    const [isChecked, setIsChecked] = useState(false);
-
-   React.useEffect(()=> {
-    if(kindOfUser==="user"){
-        setKindOfUser("employee")
-    }
-    if(kindOfUser==="employee"){
-            setKindOfUser("user")
-
-            }
-    }, [isChecked])
-  /*  const checked = ()=>{
-
-
-        if(kindOfUser==="user"){
-
-        console.log(kindOfUser)}
-
-    }*/
-
-
     return (
         <div className="w-full max-w-lg">
         <label>
@@ -106,7 +94,7 @@ const [cookies, setCookie] = useCookies(['jwt'])
                     <div className="inline">
                     <input  onClick={() => {setIsChecked(!isChecked)}} type="checkbox" checked={isChecked}  value={kindOfUser} onChange={(e) => setFormData({...formData, type: e.target.value})}/>
                     <label className="form-check-label inline-block text-gray-800 text-xs" for="flexCheckDefault">
-                            Are you an employee?
+                            Jag är anställd av Städa Fint
                           </label>
                     </div>
 
@@ -114,15 +102,15 @@ const [cookies, setCookie] = useCookies(['jwt'])
                         Email
                         <input
                             className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            type="text" name="email" value={formData.email}
+                            type="email" name="email" value={formData.email}
                             onChange={(e) => setFormData({...formData, email: e.target.value})}/>
                     </label>
 
                     <label className="block uppercase tracking-wide text-xs font-bold mb-2 text-gray-600">
-                        Password
+                        Lösenord
                         <input
                             className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            type="text" name="password" value={formData.password}
+                            type="password" name="password" value={formData.password}
                             onChange={(e) => setFormData({...formData, password: e.target.value})}/>
                     </label>
 

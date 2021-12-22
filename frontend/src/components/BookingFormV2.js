@@ -13,7 +13,7 @@ export default function BookingFormV2({userID, userName}) {
 
     const [show, setShow] = React.useState(true);
 
-    const {register, control, handleSubmit, setValue} = useForm({
+    const {register, control, handleSubmit, setValue, reset} = useForm({
         defaultValues: {
             date: new Date(),
 
@@ -58,6 +58,8 @@ export default function BookingFormV2({userID, userName}) {
                 body: JSON.stringify(data, null, null),
             }
         )
+
+        reset({data})
     };
 
 
@@ -94,8 +96,7 @@ export default function BookingFormV2({userID, userName}) {
                 render={({field}) =>
                     <ReactDatePicker
                         className="input block w-full bg-transparent outline-none border-b-2 py-2 px-4  placeholder-black-500 focus:bg-black-600"
-                        placeholderText="Select date"
-                        selected={field.value}
+                        placeholderText="Välj Datum"
                         startDate={startDate}
                         minDate={addDays(new Date(), 3)}
                         onChange={(date) => field.onChange(date)}

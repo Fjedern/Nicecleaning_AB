@@ -52,6 +52,12 @@ const AdminPage = () => {
                         type="button" onClick={console.log(userType)}>Se alla bokningar
                     </button>
                 </Link>
+                <Link to={{pathname: "/tilldela"}}>
+                    <button
+                        className="bg-gray-400 text-center text-teal-200 font-bold rounded py-2 w-2/12 focus:outline-none border-2 border-gray-600"
+                        type="button" >Tilldela
+                    </button>
+                </Link>
             </div>
         </section>
 

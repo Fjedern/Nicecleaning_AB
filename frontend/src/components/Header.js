@@ -1,13 +1,13 @@
 
 import '../styles/tailwind.css';
 import { Link } from "react-router-dom";
-import { useCookies, withCookies, Cookies } from 'react-cookie';
+import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router';
 
 function Header (){
 
 let navigate = useNavigate();
-const [cookies, setCookie, removeCookie] = useCookies(['jwt']) //can setCookie be deleted?
+const [cookies, removeCookie] = useCookies(['jwt']) //can setCookie be deleted?
 
 const onLogout = ()=> {
  removeCookie('jwt');

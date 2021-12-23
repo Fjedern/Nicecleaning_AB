@@ -18,42 +18,42 @@ public class JwtService {
     @Autowired
     UserService userService;
 
-    public boolean jwtIsValid(String jwt){
+    public boolean jwtIsValid(String jwt) {
         Claims claims = JwtUtils.decodeJWT(jwt);
         Long nowMillis = System.currentTimeMillis();
         Date now = new Date(nowMillis);
 
-        if (claims.getExpiration().compareTo(now) > 0){
+        if (claims.getExpiration().compareTo(now) > 0) {
             return true;
         }
         return false;
     }
 
-    public User getJwtOwner(String jwt){
+    public User getJwtOwner(String jwt) {
         Claims claims = JwtUtils.decodeJWT(jwt);
 
-            List<User> userList = userService.getAll();
+        List<User> userList = userService.getAll();
 
-            User foundUser;
+        User foundUser;
 
-            for (User user : userList) {
-                if (user.getId().equals(Long.valueOf(claims.getId()))) {
-                    foundUser = user;
-                    return foundUser;
-                }
+        for (User user : userList) {
+            if (user.getId().equals(Long.valueOf(claims.getId()))) {
+                foundUser = user;
+                return foundUser;
             }
+        }
         return null;
     }
 
-    public Employee getEmployeeByJwt(String jwt){
+    public Employee getEmployeeByJwt(String jwt) {
         Claims claims = JwtUtils.decodeJWT(jwt);
 
         List<Employee> employeeList = employeeService.findAllEmployees();
 
         Employee foundEmployee;
 
-        for (Employee employee : employeeList){
-            if (employee.getId().equals(Long.valueOf(claims.getId()))){
+        for (Employee employee : employeeList) {
+            if (employee.getId().equals(Long.valueOf(claims.getId()))) {
                 foundEmployee = employee;
                 return foundEmployee;
             }

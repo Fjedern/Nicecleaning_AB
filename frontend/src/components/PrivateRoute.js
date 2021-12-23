@@ -12,10 +12,10 @@ const PrivateRoute = () => {
 
     const [cookies, setCookie] = useCookies(['jwt'])
     const [loggedUser, setLoggedUser] = useState({
-            userName: "",
-            userId: 0,
-            userType: ""
-        });
+        userName: "",
+        userId: 0,
+        userType: ""
+    });
 
     const checkTypeOfUser = async () => {
         console.log(cookies);
@@ -25,8 +25,8 @@ const PrivateRoute = () => {
                 "Content-Type": 'application/json',
                 'Accept': 'application/json'
             },
-                body: JSON.stringify(cookies.jwt.token),
-            })
+            body: JSON.stringify(cookies.jwt.token),
+        })
             .then(response =>
                 response.json())
             .then(data => setLoggedUser(data))
@@ -34,13 +34,11 @@ const PrivateRoute = () => {
     };
 
     useEffect(() => {
-        if(!cookies.jwt){
+        if (!cookies.jwt) {
             return <Navigate to="/login"/>
         }
         checkTypeOfUser();
     }, [])
-
-
 
     if (cookies != null) {
         if (loggedUser.userType === "customer") {

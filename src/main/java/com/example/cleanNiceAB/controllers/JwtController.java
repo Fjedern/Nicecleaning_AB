@@ -24,7 +24,7 @@ public class JwtController {
             User user = jwtService.getJwtOwner(token);
 
             MyPageDetails tokenDetails = new MyPageDetails(
-            user.getName(), user.getId().toString(), user.getUserType(), user.getAddress(), user.getPhoneNr(), user.getEmail());
+                    user.getName(), user.getId().toString(), user.getUserType(), user.getAddress(), user.getPhoneNr(), user.getEmail());
 
             return tokenDetails;
         }

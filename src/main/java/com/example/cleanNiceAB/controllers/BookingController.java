@@ -27,9 +27,8 @@ public class BookingController {
 
     }
 
-
     @PostMapping("/add")
-    public ResponseEntity<Booking> addBooking(@RequestBody Booking booking){
+    public ResponseEntity<Booking> addBooking(@RequestBody Booking booking) {
         Booking newBooking = bookingService.addBooking(booking);
 
 
@@ -37,27 +36,26 @@ public class BookingController {
     }
 
     @GetMapping("/viewAll")
-    public List<Booking> getAllBookings(){
+    public List<Booking> getAllBookings() {
         return bookingService.findAllBookings();
     }
 
     @GetMapping("/viewAll/{name}")
-    public List<Booking> getAllBookingsByCustomerName(@PathVariable("name") String name){
-        return  bookingService.findAllBookingsByCustomerName(name);
+    public List<Booking> getAllBookingsByCustomerName(@PathVariable("name") String name) {
+        return bookingService.findAllBookingsByCustomerName(name);
     }
 
     @GetMapping("/viewAllBookings/{id}")
-    public List<Booking> getAllBookingsByCustomerId (@PathVariable("id") Long id){
-        return  bookingService.findAllByUserId(id);
+    public List<Booking> getAllBookingsByCustomerId(@PathVariable("id") Long id) {
+        return bookingService.findAllByUserId(id);
     }
 
     @Transactional
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteBooking (@PathVariable("id") Long id){
+    public ResponseEntity<?> deleteBooking(@PathVariable("id") Long id) {
         bookingService.deleteBooking(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 
     //DTO
     @Value
@@ -70,7 +68,4 @@ public class BookingController {
         User user;
 
     }
-
-
-
 }

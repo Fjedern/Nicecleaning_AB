@@ -1,4 +1,3 @@
-
 import BookingFormV2 from "../components/BookingFormV2";
 import {useCookies, withCookies, Cookies} from 'react-cookie';
 import {Navigate, useNavigate} from 'react-router';
@@ -45,7 +44,7 @@ const AdminPage = () => {
                     className="bg-gray-400 text-center text-teal-200 font-bold rounded py-2 w-2/12 focus:outline-none border-2 border-gray-600">Skapa
                     bokning
                 </button>
-                <RegisterAsAdminModal />
+                <RegisterAsAdminModal/>
                 <Link to={{pathname: "/allbookings/" + userType}}>
                     <button
                         className="bg-gray-400 text-center text-teal-200 font-bold rounded py-2 w-2/12 focus:outline-none border-2 border-gray-600"
@@ -55,7 +54,7 @@ const AdminPage = () => {
                 <Link to={{pathname: "/tilldela"}}>
                     <button
                         className="bg-gray-400 text-center text-teal-200 font-bold rounded py-2 w-2/12 focus:outline-none border-2 border-gray-600"
-                        type="button" >Tilldela
+                        type="button">Tilldela
                     </button>
                 </Link>
             </div>

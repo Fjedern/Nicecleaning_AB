@@ -25,7 +25,6 @@ public class UserController {
 
     }
 
-
     @PostMapping("/add")
     public ResponseEntity<User> addUser(@RequestBody User user) throws NoSuchAlgorithmException {
         user.setSalt(SecureUtils.getSalt());

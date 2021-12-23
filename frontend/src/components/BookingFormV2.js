@@ -3,7 +3,7 @@ import Select from "react-select";
 import ReactDatePicker from "react-datepicker";
 import {useForm, Controller} from "react-hook-form";
 import "react-datepicker/dist/react-datepicker.css";
-import { addDays, setHours, setMinutes } from 'date-fns';
+import {addDays, setHours, setMinutes} from 'date-fns';
 import sv from "date-fns/locale/sv"; // the locale you want
 
 import Swal from "sweetalert2";
@@ -21,7 +21,6 @@ export default function BookingFormV2({userID, userName}) {
     });
 
 
-
     const bookingSuccess = function () {
         Swal.fire({
             icon: "question",
@@ -33,7 +32,7 @@ export default function BookingFormV2({userID, userName}) {
             if (result.isConfirmed) {
                 Swal.fire({
                     icon: 'success',
-                    title: userName+', tack för din bokning! Städa Fint kommer att skicka ut en av sina bästa medarbetare till er!',
+                    title: userName + ', tack för din bokning! Städa Fint kommer att skicka ut en av sina bästa medarbetare till er!',
                     imageUrl: 'https://media.giphy.com/media/xsATxBQfeKHCg/giphy.gif',
                     timer: 5000
                 })
@@ -49,8 +48,8 @@ export default function BookingFormV2({userID, userName}) {
 
     const onSubmit = (data) => {
         bookingSuccess()
-      
-        console.log("Booking JSONdata: "+JSON.stringify(data, null, null))
+
+        console.log("Booking JSONdata: " + JSON.stringify(data, null, null))
 
         fetch("http://localhost:8080/booking/add", {
                 method: "post",
@@ -108,7 +107,9 @@ export default function BookingFormV2({userID, userName}) {
                     />
                 }
             />
-            <input className="mt-4 bg-gray-700 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" onClick={() => setValue("user", {id: userID})}/>
+            <input
+                className="mt-4 bg-gray-700 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="submit" onClick={() => setValue("user", {id: userID})}/>
         </form>
     );
 }

@@ -26,7 +26,7 @@ public class Employee implements Serializable {
     private String email;
     @Column(name = "password")
     private String password;
-    @Column(name= "salt")
+    @Column(name = "salt")
     private byte[] salt;
     @Column(name = "name")
     private String name;

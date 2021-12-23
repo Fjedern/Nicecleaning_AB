@@ -7,7 +7,7 @@ export default function RegisterAsAdminModal() {
 
     const [formData, setFormData] = useState({
         name: "",
-        address:"",
+        address: "",
         phoneNr: "",
         email: "",
         password: "",
@@ -15,14 +15,14 @@ export default function RegisterAsAdminModal() {
         userType: "customer",
     });
 
-    const onSubmit=(event)=>{
+    const onSubmit = (event) => {
         setShowModal(false)
         console.log(formData.userType);
         event.preventDefault();
 
-        fetch("http://localhost:8080/user/add",{
+        fetch("http://localhost:8080/user/add", {
             method: "post",
-            headers: {"Content-Type":'application/json'},
+            headers: {"Content-Type": 'application/json'},
             body: JSON.stringify(formData),
         })
             .then(response => {
@@ -32,12 +32,12 @@ export default function RegisterAsAdminModal() {
 
                 } else {
                     console.log(response.status)
-                }})
+                }
+            })
             .catch((error) => {
                 console.log(error)
             })
     }
-
 
     return (
         <>
@@ -55,11 +55,10 @@ export default function RegisterAsAdminModal() {
                     >
                         <div className="relative w-auto my-6 mx-auto max-w-3xl">
                             {/*content*/}
-
-                                <div
-                                    className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                                    {/*header*/}
-                                    <form ref={formRef} onSubmit={onSubmit} className="bg-white">
+                            <div
+                                className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                                {/*header*/}
+                                <form ref={formRef} onSubmit={onSubmit} className="bg-white">
                                     <div
                                         className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                                         <h3 className="text-3xl font-semibold">
@@ -83,8 +82,8 @@ export default function RegisterAsAdminModal() {
                                                        value={formData.company}
                                                        onChange={() => setFormData({...formData, company: false})}/>
                                                 <span className="text-sm ml-2 pr-4 text-gray-500 font-bold">
-                                Privatperson
-                              </span>
+                                                    Privatperson
+                                                </span>
                                             </label>
                                             <label className="inline-flex items-center md:w-2/3">
                                                 <input className="form-radio" type="radio" name="company"
@@ -92,8 +91,8 @@ export default function RegisterAsAdminModal() {
                                                        onChange={() => setFormData({...formData, company: true})}
                                                 />
                                                 <span className="text-sm ml-2 text-gray-500 font-bold">
-                                Företag
-                              </span>
+                                                    Företag
+                                                </span>
                                             </label>
                                         </div>
                                         <label
@@ -105,7 +104,6 @@ export default function RegisterAsAdminModal() {
                                                 onChange={(e) => setFormData({...formData, name: e.target.value})}
                                                 required/>
                                         </label>
-
                                         <label
                                             className="block uppercase tracking-wide text-xs font-bold mb-2 text-gray-600">
                                             Address
@@ -115,7 +113,6 @@ export default function RegisterAsAdminModal() {
                                                 onChange={(e) => setFormData({...formData, address: e.target.value})}
                                                 required/>
                                         </label>
-
                                         <label
                                             className="block uppercase tracking-wide text-xs font-bold mb-2 text-gray-600">
                                             Telefonummer
@@ -125,7 +122,6 @@ export default function RegisterAsAdminModal() {
                                                 onChange={(e) => setFormData({...formData, phoneNr: e.target.value})}
                                                 required/>
                                         </label>
-
                                         <label
                                             className="block uppercase tracking-wide text-xs font-bold mb-2 text-gray-600">
                                             Email (används som användarnamn)
@@ -149,7 +145,6 @@ export default function RegisterAsAdminModal() {
                                             <option value="employee">Employee</option>
                                             <option value="admin">Admin</option>
                                         </select>
-
                                         <label className="flex items-center">
                                             <input type="checkbox" className="form-checkbox" required/>
                                             <span
@@ -171,12 +166,12 @@ export default function RegisterAsAdminModal() {
                                         >
                                             Close
                                         </button>
-                                        <input className="bg-gray-700 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                                               type="submit" value="Registrera"/>
+                                        <input
+                                            className="bg-gray-700 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                            type="submit" value="Registrera"/>
                                     </div>
-                                    </form>
-                                </div>
-
+                                </form>
+                            </div>
                         </div>
                     </div>
                     <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>

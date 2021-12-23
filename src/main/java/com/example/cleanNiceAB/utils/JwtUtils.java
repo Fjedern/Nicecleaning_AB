@@ -18,7 +18,7 @@ public class JwtUtils {
 
     private static String secret = "Dammsuga";
 
-    public static String createJWT(User user){
+    public static String createJWT(User user) {
 
         SignatureAlgorithm sa = SignatureAlgorithm.HS256;
 
@@ -40,7 +40,8 @@ public class JwtUtils {
 
         return builder.compact();
     }
-    public static String createEmployeeJWT(Employee employee){
+
+    public static String createEmployeeJWT(Employee employee) {
 
         SignatureAlgorithm sa = SignatureAlgorithm.HS256;
 

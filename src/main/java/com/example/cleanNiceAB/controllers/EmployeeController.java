@@ -40,17 +40,17 @@ public class EmployeeController {
     }
 
     @GetMapping("/viewAll")
-    public List<EmployeeDTO> getAllEmployees(@RequestHeader String token){
+    public List<EmployeeDTO> getAllEmployees(@RequestHeader String token) {
         List<Employee> employeeList = employeeService.findAllEmployees();
         List<EmployeeDTO> employeeDTOs = new ArrayList<>();
-        for (Employee employee : employeeList){
-            employeeDTOs.add(new EmployeeDTO(String.valueOf(employee.getId()),employee.getName(),employee.getAddress(),employee.getPhoneNr(),employee.getEmail()));
+        for (Employee employee : employeeList) {
+            employeeDTOs.add(new EmployeeDTO(String.valueOf(employee.getId()), employee.getName(), employee.getAddress(), employee.getPhoneNr(), employee.getEmail()));
         }
         return employeeDTOs;
     }
 
     @GetMapping("/viewBookings")
-    public Set<Booking> getBookings(@RequestHeader String token){
+    public Set<Booking> getBookings(@RequestHeader String token) {
         Claims claims = JwtUtils.decodeJWT(token);
         Optional<Employee> optionalEmployee = employeeService.findEmployeeById(Long.parseLong(claims.getId()));
         Employee employee = optionalEmployee.get();
@@ -60,7 +60,7 @@ public class EmployeeController {
     @Transactional
     @Modifying
     @PostMapping("/addEmployeeToBooking")
-    public ResponseEntity<?> addEmployeeToBooking(@RequestBody Employee employee, Booking booking){
+    public ResponseEntity<?> addEmployeeToBooking(@RequestBody Employee employee, Booking booking) {
         System.out.println(employee.getName());
         employee.setBookings((Set<Booking>) booking);
 

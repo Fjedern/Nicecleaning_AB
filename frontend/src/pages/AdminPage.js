@@ -1,4 +1,4 @@
-import BookingForm from '../components/BookingForm.js';
+
 import BookingFormV2 from "../components/BookingFormV2";
 import {useCookies, withCookies, Cookies} from 'react-cookie';
 import {Navigate, useNavigate} from 'react-router';
@@ -13,7 +13,7 @@ const AdminPage = () => {
     const [cookies, setCookie] = useCookies(['jwt'])
     const userType = "admin";
     const [nameOfUser, setNameOfUser] = useState("");
-    //console.log(userType);
+
 
     useEffect(() => {
         loadData();

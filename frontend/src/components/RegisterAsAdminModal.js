@@ -20,9 +20,6 @@ export default function RegisterAsAdminModal() {
         console.log(formData.userType);
         event.preventDefault();
 
-        console.log(formData);
-
-        //TODO add validation?
         fetch("http://localhost:8080/user/add",{
             method: "post",
             headers: {"Content-Type":'application/json'},

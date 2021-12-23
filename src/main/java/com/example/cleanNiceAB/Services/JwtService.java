@@ -18,8 +18,6 @@ public class JwtService {
     @Autowired
     UserService userService;
 
-
-
     public boolean jwtIsValid(String jwt){
         Claims claims = JwtUtils.decodeJWT(jwt);
         Long nowMillis = System.currentTimeMillis();
@@ -44,8 +42,6 @@ public class JwtService {
                     return foundUser;
                 }
             }
-
-
         return null;
     }
 

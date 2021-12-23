@@ -35,7 +35,6 @@ public class EmployeeController {
     public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee) throws NoSuchAlgorithmException {
         employee.setSalt(SecureUtils.getSalt());
         employee.setPassword(SecureUtils.getSecurePassword(employee.getPassword(), employee.getSalt()));
-        System.out.println("TEST"+employee.getPassword());
         Employee newEmployee = employeeService.addEmployee(employee);
         return new ResponseEntity<>(newEmployee, HttpStatus.CREATED);
     }

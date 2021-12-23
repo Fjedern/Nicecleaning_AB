@@ -1,4 +1,3 @@
-
 import '../styles/tailwind.css';
 import { Link } from "react-router-dom";
 import { useCookies } from 'react-cookie';

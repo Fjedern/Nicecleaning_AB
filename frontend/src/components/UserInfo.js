@@ -1,13 +1,10 @@
-
-
-function UserInfo({ userName, userAddress, userEmail, userPhoneNr }) {
+function UserInfo({userAddress, userEmail, userPhoneNr }) {
 
     return (
         <div>
 
         <div className="p-4 ">
 
-            {/*<h5 className=" mt-4 text-gray-900 text-xl font-medium mb-2">Välkommen till din sida, {userName}!</h5>*/}
             <div className="">
                 <div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
 

@@ -30,7 +30,6 @@ public class UserController {
     public ResponseEntity<User> addUser(@RequestBody User user) throws NoSuchAlgorithmException {
         user.setSalt(SecureUtils.getSalt());
         user.setPassword(SecureUtils.getSecurePassword(user.getPassword(), user.getSalt()));
-        System.out.println("TEST"+user.getPassword());
         User newUser = userService.addUser(user);
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }

@@ -16,14 +16,10 @@ import java.util.Date;
 
 @SpringBootTest
 class CleanNiceAbApplicationTests {
-	@Autowired
-	LoginController loginController;
-	EmployeeController employeeController;
-
 
 	@Autowired
 	JwtService jwtService;
-	EmployeeService employeeService;
+
 
 	@Test
 	void contextLoads() {
@@ -36,12 +32,6 @@ class CleanNiceAbApplicationTests {
 		System.out.println(user.getEmail());
 	}
 
-	@Test
-	void test_update_Employee_with_booking_success (){
-		//employeeController.addEmployee(new Employee("test", "test", "test"));
-		//employeeController.addEmployeeToBooking
-		//Employee employee = employeeService.addEmployee("testmail", "test15", SecureUtils, "0988", "adrestest");
 
-	}
 
 }

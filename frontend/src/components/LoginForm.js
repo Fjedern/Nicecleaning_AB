@@ -22,7 +22,6 @@ function LoginForm() {
         }
         if(kindOfUser==="employee"){
                 setKindOfUser("user")
-
                 }
         }, [isChecked])
 
@@ -37,7 +36,6 @@ function LoginForm() {
              timer: 3500
          })
           navigate('/')
-
      }
          else {
               Swal.fire({
@@ -54,7 +52,7 @@ function LoginForm() {
         loadData();
 
     };
-    //TODO add requirements/validation
+
     const [userType, setUserType] = useState("user");
 
     const loadData = async () => {
@@ -86,9 +84,6 @@ function LoginForm() {
 
     return (
         <div className="w-full max-w-lg">
-        <label>
-
-            </label>
             <form onSubmit={onSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" required>
                 <div className="mb-4">
                     <div className="inline">

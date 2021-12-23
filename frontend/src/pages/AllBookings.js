@@ -34,7 +34,7 @@ const userID = useParams();
             .then(data => setBookings(data))
             .catch(error => setHasError(true))
 
-            //TODO sessions check
+
 
     };
 
@@ -47,7 +47,7 @@ const userID = useParams();
                 .then(data => setBookings(data))
                 .catch(error => setHasError(true))
 
-                //TODO sessions check
+
 
         };
 
@@ -58,7 +58,7 @@ const userID = useParams();
         else{
              bookings.map(booking => {
                 if(booking.id === entry.id){
-                    //console.log(entry.id);
+
                     fetch("http://localhost:8080/booking/delete/" + entry.id, {
                         method: "delete"
                     })

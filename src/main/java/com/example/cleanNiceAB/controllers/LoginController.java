@@ -25,14 +25,12 @@ public class LoginController {
 
     @PostMapping("/validation")
     public JwtResponse loginValidator(@RequestBody UserDetails userDetails){
-        System.out.println(userDetails.type);
         if (userDetails.type.equals("user")){
             List<User> userList = userService.getAll();
             for (User user: userList){
                 if (userDetails.getEmail().equals(user.getEmail())) {
                     userDetails.setPassword(SecureUtils.getSecurePassword(userDetails.password, user.getSalt()));
                     if (user.getPassword().equals(userDetails.getPassword())) {
-                        System.out.println("SUCCESS TWO");
                         final String token = JwtUtils.createJWT(user);
                         return new JwtResponse(token);
                     }
@@ -47,7 +45,6 @@ public class LoginController {
                 if (userDetails.getEmail().equals(employee.getEmail())){
                     userDetails.setPassword(SecureUtils.getSecurePassword(userDetails.password, employee.getSalt()));
                     if (employee.getPassword().equals(userDetails.getPassword())){
-                        System.out.println("SUCCESS TWO");
                         final String token = JwtUtils.createEmployeeJWT(employee);
                         return new JwtResponse(token);
                     }

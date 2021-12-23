@@ -26,7 +26,7 @@ const AssignEmployee = () => {
               .then(data => setBookings(data))
               .catch(error => setHasError(true))
 
-              //TODO sessions check
+
 
       };
 
@@ -37,12 +37,12 @@ const AssignEmployee = () => {
               .then(data => setHasError(data))
               .catch(error => setHasError(true))
 
-              //TODO sessions check
+
       }
 
       const assign=(entry)=>{
         console.log(entry);
-        const response = fetch("http://localhost:8080/employee//addEmployeeToBooking/",
+        const response = fetch("http://localhost:8080/employee/addEmployeeToBooking/",
                 {
                     method: "post",
                     headers: {"Content-Type":'application/json'},

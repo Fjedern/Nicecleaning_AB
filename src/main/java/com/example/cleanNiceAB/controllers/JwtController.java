@@ -23,13 +23,8 @@ public class JwtController {
 
             User user = jwtService.getJwtOwner(token);
 
-            //System.out.println(tokenDetails.getUserName() + "ID: "+ tokenDetails.getUserID());
-
             MyPageDetails tokenDetails = new MyPageDetails(
-                    user.getName(), user.getId().toString(), user.getUserType(), user.getAddress(), user.getPhoneNr(), user.getEmail());
-            //String[] returnUser = {user.getName(), user.getUserId().toString()};
-
-            System.out.println(user.getName() + "ID: " + user.getId());
+            user.getName(), user.getId().toString(), user.getUserType(), user.getAddress(), user.getPhoneNr(), user.getEmail());
 
             return tokenDetails;
         }
